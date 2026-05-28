@@ -55,8 +55,8 @@ export const metadata: Metadata = {
   },
   category: "news",
   icons: {
-    icon: "/jepangupdates-logo-trimmed.png",
-    apple: "/jepangupdates-logo-trimmed.png",
+    icon: "/fav-icon.PNG",
+    apple: "/fav-icon.PNG",
   },
 };
 
