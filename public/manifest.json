@@ -1,0 +1,25 @@
+{
+  "name": "Jepang Updates",
+  "short_name": "JepangUpdates",
+  "description": "Portal Berita Komunitas Indonesia di Jepang",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1B5DAF",
+  "orientation": "portrait-primary",
+  "categories": ["news", "education"],
+  "lang": "id",
+  "icons": [
+    {
+      "src": "/jepangupdates-logo-trimmed.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/jepangupdates-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

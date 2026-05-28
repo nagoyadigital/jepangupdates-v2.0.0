@@ -8,6 +8,7 @@ import { WeatherWidget } from "@/components/WeatherWidget";
 import { HeadlineCarousel } from "@/components/HeadlineCarousel";
 import { SideAds } from "@/components/SideAds";
 import { DynamicAd } from "@/components/DynamicAd";
+import { LazyLoad } from "@/components/LazyLoad";
 import { prisma } from "@/lib/prisma";
 import { getWidgetConfig, isWidgetEnabled } from "@/lib/widgets";
 import { formatDateID } from "@/lib/utils";
@@ -237,17 +238,21 @@ export default async function Home() {
           </section>
 
           {isWidgetEnabled(widgetConfig, "weather") && (
-            <section>
-              <h2 className="border-b-2 border-[#E6372E] pb-2 text-xl font-black uppercase text-[#111827]">Cuaca Jepang</h2>
-              <WeatherWidget />
-            </section>
+            <LazyLoad>
+              <section>
+                <h2 className="border-b-2 border-[#E6372E] pb-2 text-xl font-black uppercase text-[#111827]">Cuaca Jepang</h2>
+                <WeatherWidget />
+              </section>
+            </LazyLoad>
           )}
 
           {isWidgetEnabled(widgetConfig, "prayer_times") && (
-            <section>
-              <h2 className="border-b-2 border-[#E6372E] pb-2 text-xl font-black uppercase text-[#111827]">Jadwal Sholat</h2>
-              <PrayerTimesWidget />
-            </section>
+            <LazyLoad>
+              <section>
+                <h2 className="border-b-2 border-[#E6372E] pb-2 text-xl font-black uppercase text-[#111827]">Jadwal Sholat</h2>
+                <PrayerTimesWidget />
+              </section>
+            </LazyLoad>
           )}
 
           <section>

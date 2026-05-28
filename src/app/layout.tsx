@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
+import { Montserrat } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import { WebsiteJsonLd } from "@/components/JsonLd";
 import { PopupAd } from "@/components/PopupAd";
 import { SeoHead, SeoBodyScripts } from "@/components/SeoHead";
 import "./globals.css";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  variable: "--font-montserrat",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -54,14 +62,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className="h-full antialiased">
+    <html lang="id" className={`h-full antialiased ${montserrat.variable}`}>
       <head>
         {/* Preconnect for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://api.open-meteo.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        {/* PWA */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#1B5DAF" />
         {/* Hreflang */}
         <link rel="alternate" hrefLang="id" href="https://jepangupdates.com" />
         <link rel="alternate" hrefLang="x-default" href="https://jepangupdates.com" />
