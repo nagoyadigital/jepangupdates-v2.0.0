@@ -40,13 +40,12 @@ export function Header() {
             target: item.target || "_self",
           }));
           setNavItems(items);
-          // Use main_nav as fallback for mobile if mobile_nav is empty
-          setMobileItems(prev => prev.length === fallbackNavItems.length ? items : prev);
+          setMobileItems(items); // Default mobile = main nav
         }
       })
       .catch(() => {});
 
-    // Fetch mobile nav (hamburger menu) — fallback to main_nav
+    // Fetch mobile nav (override if exists)
     fetch("/api/menus?location=mobile_nav")
       .then(r => r.ok ? r.json() : [])
       .then((menus) => {
@@ -56,20 +55,6 @@ export function Header() {
             url: item.url,
             target: item.target || "_self",
           })));
-        } else {
-          // If mobile_nav is empty, use main_nav
-          fetch("/api/menus?location=main_nav")
-            .then(r => r.ok ? r.json() : [])
-            .then((mainMenus) => {
-              if (Array.isArray(mainMenus) && mainMenus.length > 0 && mainMenus[0].items?.length > 0) {
-                setMobileItems(mainMenus[0].items.map((item: MenuItem) => ({
-                  label: item.label,
-                  url: item.url,
-                  target: item.target || "_self",
-                })));
-              }
-            })
-            .catch(() => {});
         }
       })
       .catch(() => {});
@@ -134,7 +119,7 @@ export function Header() {
             <SocialIcon href="https://tiktok.com/@jepangupdates" label="TikTok" icon="tiktok" />
           </div>
           <div className="mt-5 grid grid-cols-2 gap-2">
-            {mobileItems.map((item) => (
+            {mobileItems.filter((item, idx, arr) => arr.findIndex(i => i.url === item.url) === idx).map((item) => (
               <Link
                 href={item.url}
                 target={item.target}
