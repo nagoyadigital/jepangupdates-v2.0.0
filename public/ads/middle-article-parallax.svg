@@ -1,0 +1,12 @@
+<svg width="1400" height="720" viewBox="0 0 1400 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="720" fill="#F5A91B"/>
+  <rect x="86" y="86" width="1228" height="548" rx="26" fill="#F5A91B" stroke="#111827" stroke-opacity=".18" stroke-width="2"/>
+  <circle cx="1120" cy="198" r="120" fill="#111827" fill-opacity=".08"/>
+  <circle cx="1120" cy="198" r="70" fill="#111827" fill-opacity=".14"/>
+  <text x="126" y="214" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="900" letter-spacing="8">ADVERTISEMENT</text>
+  <text x="126" y="336" fill="#111827" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="78" font-weight="900">Middle Article</text>
+  <text x="126" y="430" fill="#111827" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="72" font-weight="900">Fixed Background</text>
+  <text x="126" y="512" fill="#111827" fill-opacity=".82" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700">Contoh kuning supaya efek scroll parallax terlihat jelas</text>
+  <rect x="896" y="462" width="290" height="76" rx="38" fill="#111827"/>
+  <text x="1041" y="510" text-anchor="middle" fill="#F5A91B" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="27" font-weight="900">970 x 250</text>
+</svg>
