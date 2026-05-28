@@ -5,6 +5,7 @@ import Link from "next/link";
 import { BadgeCheck } from "lucide-react";
 import { ArticleShareButtons } from "@/components/ArticleShareButtons";
 import { ArticleContentWithAd } from "@/components/ArticleContentWithAd";
+import { ArticleJsonLd } from "@/components/JsonLd";
 import { Footer } from "@/components/Footer";
 import { StickySiteHeader } from "@/components/StickySiteHeader";
 import { ParallaxAd } from "@/components/ads/ParallaxAd";
@@ -164,8 +165,28 @@ export default async function ArticlePage({ params }: PageProps) {
   // Get widget configuration
   const widgetConfig = await getWidgetConfig();
 
+  // Calculate word count for SEO
+  const wordCount = article.content.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean).length;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jepangupdates.com";
+
   return (
     <div className="min-h-screen bg-white text-[#111827]">
+      {/* Article JSON-LD for SEO */}
+      <ArticleJsonLd
+        title={article.title}
+        description={article.excerpt || article.metaDescription || article.title}
+        url={`${siteUrl}/${article.slug}`}
+        image={article.featuredImage || undefined}
+        publishedAt={article.publishedAt?.toISOString() || article.createdAt.toISOString()}
+        updatedAt={article.updatedAt.toISOString()}
+        authorName={article.author.name}
+        authorImage={article.author.image || undefined}
+        category={article.category.name}
+        categorySlug={article.category.slug}
+        tags={article.tags.map(t => t.tag.name)}
+        wordCount={wordCount}
+      />
+
       {article.status !== "PUBLISHED" && (
         <div className="sticky top-0 z-[60] border-b border-yellow-300 bg-yellow-50 px-4 py-2 text-center text-sm font-bold text-yellow-800">
           ⚠️ Mode Preview — Artikel ini belum dipublikasikan (Status: {article.status})

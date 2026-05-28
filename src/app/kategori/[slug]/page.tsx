@@ -9,6 +9,7 @@ import { SideAds } from "@/components/SideAds";
 import { DynamicAd } from "@/components/DynamicAd";
 import { PrayerTimesWidget } from "@/components/PrayerTimesWidget";
 import { WeatherWidget } from "@/components/WeatherWidget";
+import { CategoryBreadcrumbJsonLd } from "@/components/JsonLd";
 import { getWidgetConfig, isWidgetEnabled } from "@/lib/widgets";
 import { formatDateID } from "@/lib/utils";
 import type { Metadata } from "next";
@@ -51,6 +52,7 @@ export default async function CategoryPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-white text-[#111827]">
+      <CategoryBreadcrumbJsonLd name={category.name} slug={slug} />
       <ParallaxAd position="MOBILE_TOP" />
       <StickySiteHeader />
 

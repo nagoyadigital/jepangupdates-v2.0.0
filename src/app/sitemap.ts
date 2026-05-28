@@ -33,6 +33,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
+  const staticPages = [
+    { url: `${SITE_URL}/kontak`, priority: 0.4, changeFrequency: "monthly" as const },
+    { url: `${SITE_URL}/tentang-kami`, priority: 0.4, changeFrequency: "monthly" as const },
+    { url: `${SITE_URL}/redaksi`, priority: 0.3, changeFrequency: "monthly" as const },
+    { url: `${SITE_URL}/iklan`, priority: 0.4, changeFrequency: "monthly" as const },
+    { url: `${SITE_URL}/kebijakan-privasi`, priority: 0.2, changeFrequency: "yearly" as const },
+    { url: `${SITE_URL}/syarat-ketentuan`, priority: 0.2, changeFrequency: "yearly" as const },
+    { url: `${SITE_URL}/pedoman-media-siber`, priority: 0.3, changeFrequency: "yearly" as const },
+  ];
+
   return [
     {
       url: SITE_URL,
@@ -42,5 +52,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     ...articleUrls,
     ...categoryUrls,
+    ...staticPages,
   ];
 }

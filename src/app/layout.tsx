@@ -12,18 +12,40 @@ export const metadata: Metadata = {
   },
   description: "Portal berita komunitas Indonesia di Jepang. Informasi terkini seputar pekerjaan, imigrasi, event, dan kehidupan di Jepang.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://jepangupdates.com"),
+  keywords: ["berita jepang", "indonesia di jepang", "pekerjaan jepang", "tokutei ginou", "SSW jepang", "komunitas indonesia jepang", "jepang updates"],
+  authors: [{ name: "Jepang Updates", url: "https://jepangupdates.com" }],
+  creator: "Jepang Updates",
+  publisher: "Jepang Updates",
+  formatDetection: { telephone: false },
   openGraph: {
     type: "website",
     locale: "id_ID",
     siteName: "Jepang Updates",
+    images: [{ url: "/jepangupdates-logo.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
+    site: "@jepangupdates",
+    creator: "@jepangupdates",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
+  alternates: {
+    canonical: "https://jepangupdates.com",
+    languages: {
+      "id-ID": "https://jepangupdates.com",
+    },
+  },
+  category: "news",
 };
 
 export default function RootLayout({
@@ -34,6 +56,15 @@ export default function RootLayout({
   return (
     <html lang="id" className="h-full antialiased">
       <head>
+        {/* Preconnect for performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://api.open-meteo.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        {/* Hreflang */}
+        <link rel="alternate" hrefLang="id" href="https://jepangupdates.com" />
+        <link rel="alternate" hrefLang="x-default" href="https://jepangupdates.com" />
         <SeoHead />
       </head>
       <body className="min-h-full flex flex-col">
