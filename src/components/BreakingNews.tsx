@@ -23,11 +23,11 @@ export function BreakingNews() {
     <div className="overflow-hidden border-b border-slate-200 bg-white">
       <div className="mx-auto max-w-6xl px-4 py-2 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden">
-          <div className="animate-marquee flex items-center gap-6 whitespace-nowrap">
-            {[...items, ...items].map((item, i) => (
-              <span key={i} className="inline-flex items-center gap-3">
-                <span className="h-[6px] w-[6px] flex-shrink-0 rounded-full bg-[#E6372E]" />
-                <Link href={`/${item.slug}`} className="text-xs font-bold text-[#111827] hover:text-[#1B5DAF]">
+          <div className="animate-marquee flex items-center whitespace-nowrap">
+            {[...items, ...items, ...items].map((item, i) => (
+              <span key={i} className="inline-flex items-center gap-2 pr-8">
+                <span className="h-[5px] w-[5px] flex-shrink-0 rounded-full bg-[#E6372E]" />
+                <Link href={`/${item.slug}`} className="text-[11px] font-bold text-[#111827] hover:text-[#1B5DAF] sm:text-xs">
                   {item.title}
                 </Link>
               </span>
