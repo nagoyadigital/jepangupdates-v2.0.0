@@ -24,7 +24,7 @@ export function BreakingNews() {
       <div className="mx-auto max-w-6xl px-4 py-2 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden">
           <div className="animate-marquee flex items-center whitespace-nowrap">
-            {[...items, ...items, ...items].map((item, i) => (
+            {[...items, ...items, ...items, ...items].map((item, i) => (
               <span key={i} className="inline-flex items-center gap-2 pr-8">
                 <span className="h-[5px] w-[5px] flex-shrink-0 rounded-full bg-[#E6372E]" />
                 <Link href={`/${item.slug}`} className="text-[11px] font-bold text-[#111827] hover:text-[#1B5DAF] sm:text-xs">
