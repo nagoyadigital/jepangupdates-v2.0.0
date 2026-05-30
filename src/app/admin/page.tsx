@@ -50,9 +50,15 @@ export default function AdminDashboard() {
   const [refreshing, setRefreshing] = useState(false);
 
   const fetchDashboard = useCallback(async (isRefresh = false) => {
-    if (isRefresh) setRefreshing(true);
+    if (isRefresh) {
+      setRefreshing(true);
+      setLoading(true);
+    }
     try {
-      const res = await fetch("/api/admin/dashboard", { cache: "no-store" });
+      const res = await fetch("/api/admin/dashboard", {
+        cache: "no-store",
+        headers: { "Cache-Control": "no-cache" },
+      });
       if (res.ok) {
         const data = await res.json();
         setStats(data.stats);
@@ -67,6 +73,12 @@ export default function AdminDashboard() {
   }, []);
 
   useEffect(() => {
+    // Reset state on mount to prevent stale data flash
+    setStats(null);
+    setRecentArticles([]);
+    setTopArticles([]);
+    setCategoryStats([]);
+    setLoading(true);
     fetchDashboard();
   }, [fetchDashboard]);
 
