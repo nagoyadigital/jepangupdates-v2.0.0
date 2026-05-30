@@ -17,14 +17,16 @@ export default function ProfilePage() {
     const res = await fetch("/api/admin/profile");
     if (res.ok) {
       const data = await res.json();
-      setProfile({
-        name: data.name,
-        email: data.email,
-        bio: data.bio || "",
-        role: data.role,
-        image: data.image || "",
-        articleCount: data._count?.articles || 0,
-      });
+      if (data) {
+        setProfile({
+          name: data.name || "",
+          email: data.email || "",
+          bio: data.bio || "",
+          role: data.role || "",
+          image: data.image || "",
+          articleCount: data._count?.articles || 0,
+        });
+      }
     }
     setLoading(false);
   }

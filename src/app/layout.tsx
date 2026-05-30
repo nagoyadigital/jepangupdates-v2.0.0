@@ -13,52 +13,62 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Jepang Updates - Portal Berita Komunitas Indonesia di Jepang",
-    template: "%s | Jepang Updates",
-  },
-  description: "Portal berita komunitas Indonesia di Jepang. Informasi terkini seputar pekerjaan, imigrasi, event, dan kehidupan di Jepang.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://jepangupdates.com"),
-  keywords: ["berita jepang", "indonesia di jepang", "pekerjaan jepang", "tokutei ginou", "SSW jepang", "komunitas indonesia jepang", "jepang updates"],
-  authors: [{ name: "Jepang Updates", url: "https://jepangupdates.com" }],
-  creator: "Jepang Updates",
-  publisher: "Jepang Updates",
-  formatDetection: { telephone: false },
-  openGraph: {
-    type: "website",
-    locale: "id_ID",
-    siteName: "Jepang Updates",
-    images: [{ url: "/jepangupdates-logo.png", width: 1200, height: 630 }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@jepangupdates",
-    creator: "@jepangupdates",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+import { prisma } from "@/lib/prisma";
+
+async function getSiteSettings() {
+  try {
+    const settings = await prisma.siteSetting.findMany({
+      where: { group: { in: ["general", "seo"] } },
+    });
+    const result: Record<string, string> = {};
+    for (const s of settings) result[s.key] = s.value;
+    return result;
+  } catch {
+    return {};
+  }
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const s = await getSiteSettings();
+  const siteName = s.site_name || "Jepang Updates";
+  const tagline = s.site_tagline || "Portal Berita Komunitas Indonesia di Jepang";
+  const description = s.site_description || "Portal berita komunitas Indonesia di Jepang.";
+  const siteUrl = s.site_url || "https://jepangupdates.com";
+  const favicon = s.site_favicon || "/fav-icon.PNG";
+
+  return {
+    title: {
+      default: `${siteName} - ${tagline}`,
+      template: `%s | ${siteName}`,
+    },
+    description,
+    metadataBase: new URL(siteUrl),
+    keywords: ["berita jepang", "indonesia di jepang", "pekerjaan jepang", "tokutei ginou", "SSW jepang", siteName.toLowerCase()],
+    authors: [{ name: siteName, url: siteUrl }],
+    creator: siteName,
+    publisher: siteName,
+    formatDetection: { telephone: false },
+    openGraph: {
+      type: "website",
+      locale: "id_ID",
+      siteName,
+      images: [{ url: s.site_logo || "/jepangupdates-logo.png", width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@jepangupdates",
+      creator: "@jepangupdates",
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      googleBot: { index: true, follow: true, "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 },
     },
-  },
-  alternates: {
-    canonical: "https://jepangupdates.com",
-    languages: {
-      "id-ID": "https://jepangupdates.com",
-    },
-  },
-  category: "news",
-  icons: {
-    icon: "/fav-icon.PNG",
-    apple: "/fav-icon.PNG",
-  },
-};
+    alternates: { canonical: siteUrl },
+    category: "news",
+    icons: { icon: favicon, apple: favicon },
+  };
+}
 
 export default function RootLayout({
   children,

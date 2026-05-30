@@ -21,6 +21,8 @@ const fallbackNavItems = [
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [siteLogo, setSiteLogo] = useState("");
+  const [logoReady, setLogoReady] = useState(false);
   const [navItems, setNavItems] = useState<{ label: string; url: string; target: string }[]>(
     fallbackNavItems.map(i => ({ ...i, target: "_self" }))
   );
@@ -29,6 +31,15 @@ export function Header() {
   );
 
   useEffect(() => {
+    // Fetch site logo
+    fetch("/api/settings/public")
+      .then(r => r.ok ? r.json() : {})
+      .then(data => {
+        if (data?.general?.site_logo) setSiteLogo(data.general.site_logo);
+        setLogoReady(true);
+      })
+      .catch(() => setLogoReady(true));
+
     // Fetch main nav (desktop nav bar)
     fetch("/api/menus?location=main_nav")
       .then(r => r.ok ? r.json() : [])
@@ -64,14 +75,11 @@ export function Header() {
     <header className="bg-white">
       <div className="mx-auto grid max-w-6xl grid-cols-[168px_1fr] items-center gap-3 px-4 py-3 sm:grid-cols-[190px_minmax(220px,1fr)_190px] sm:gap-4 sm:px-6 sm:py-4 lg:grid-cols-[240px_1fr_250px] lg:px-8">
         <Link href="/" className="flex h-[54px] items-center sm:h-[56px] lg:h-[66px]" aria-label="Jepang Updates homepage">
-          <Image
-            src="/jepangupdates-logo-trimmed.png"
-            alt="Jepang Updates"
-            width={4951}
-            height={1515}
-            priority
-            className="h-full w-auto object-contain"
-          />
+          {logoReady && siteLogo ? (
+            <img src={siteLogo} alt="Logo" className="h-full w-auto object-contain" />
+          ) : (
+            <div className="h-10 w-32 animate-pulse rounded bg-slate-200" />
+          )}
         </Link>
 
         <SearchForm className="hidden sm:order-none sm:col-span-1 sm:mx-auto sm:flex sm:h-10 sm:w-full sm:max-w-sm lg:h-11 lg:max-w-md" />
@@ -94,13 +102,13 @@ export function Header() {
         </button>
       </div>
 
-      <nav className="bg-[#1B5DAF]">
+      <nav style={{ backgroundColor: "var(--color-primary)" }}>
         <div className="mx-auto flex max-w-6xl overflow-x-auto px-4 sm:px-6 lg:px-8">
           {navItems.map((item) => (
             <Link
               href={item.url}
               target={item.target}
-              className="shrink-0 px-2.5 py-2.5 text-[10px] font-extrabold uppercase text-white transition hover:bg-[#2D54A7] sm:px-3 sm:py-3 sm:text-[11px] sm:font-black"
+              className="shrink-0 px-2.5 py-2.5 text-[10px] font-extrabold uppercase text-white transition hover:bg-white/20 sm:px-3 sm:py-3 sm:text-[11px] sm:font-black"
               key={item.label}
             >
               {item.label}
@@ -155,7 +163,7 @@ function SearchForm({ className }: { className: string }) {
         className="min-w-0 flex-1 px-4 text-sm text-[#111827] outline-none placeholder:text-slate-400 sm:px-5 sm:text-sm"
         placeholder="Cari Berita..."
       />
-      <button className="flex w-12 items-center justify-center rounded-r-full bg-[#1B5DAF] text-white transition hover:bg-[#164a8a] sm:w-14" aria-label="Cari">
+      <button className="flex w-12 items-center justify-center rounded-r-full text-white transition hover:opacity-80 sm:w-14" style={{ backgroundColor: "var(--color-primary)" }} aria-label="Cari">
         <Search size={18} strokeWidth={2.5} />
       </button>
     </form>
@@ -175,7 +183,8 @@ function SocialIcon({
     <a
       href={href}
       aria-label={label}
-      className="grid h-8 w-8 place-items-center rounded-full bg-[#1B5DAF] text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#164a8a] hover:shadow-md sm:h-9 sm:w-9 lg:h-10 lg:w-10"
+      className="grid h-8 w-8 place-items-center rounded-full text-white shadow-sm transition hover:-translate-y-0.5 hover:opacity-80 hover:shadow-md sm:h-9 sm:w-9 lg:h-10 lg:w-10"
+      style={{ backgroundColor: "var(--color-primary)" }}
     >
       <BrandGlyph icon={icon} />
     </a>

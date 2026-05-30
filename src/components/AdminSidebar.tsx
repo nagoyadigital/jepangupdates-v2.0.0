@@ -21,7 +21,7 @@ import {
   Users,
   X,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const menuGroups = [
   {
@@ -43,6 +43,7 @@ const menuGroups = [
   {
     label: "Tampilan & Iklan",
     items: [
+      { label: "Warna & Tema", href: "/admin/theme", icon: Puzzle, minRole: "ADMIN" },
       { label: "Iklan / Ads", href: "/admin/ads", icon: Megaphone, minRole: "ADMIN" },
       { label: "Widget", href: "/admin/widgets", icon: Puzzle, minRole: "ADMIN" },
       { label: "Menu Navigasi", href: "/admin/menus", icon: NavigationIcon, minRole: "ADMIN" },
@@ -63,6 +64,19 @@ export function AdminSidebar() {
   const pathname = usePathname();
   const { data: session } = useSession();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [primaryColor, setPrimaryColor] = useState("#1B5DAF");
+  const [siteLogo, setSiteLogo] = useState("/jepangupdates-logo-trimmed.png");
+
+  useEffect(() => {
+    fetch("/api/settings/public")
+      .then((r) => (r.ok ? r.json() : {}))
+      .then((data) => {
+        if (data?.appearance?.primary_color) setPrimaryColor(data.appearance.primary_color);
+        const general = data?.general || {};
+        setSiteLogo(general.admin_logo || general.site_logo || "/jepangupdates-logo-trimmed.png");
+      })
+      .catch(() => {});
+  }, []);
 
   const roleLabel: Record<string, string> = {
     SUPER_ADMIN: "Super Admin",
@@ -92,9 +106,9 @@ export function AdminSidebar() {
   return (
     <>
       {/* Mobile toggle */}
-      <div className="sticky top-0 z-40 flex items-center justify-between border-b border-slate-200 bg-[#1B5DAF] px-4 py-3 lg:hidden">
+      <div className="sticky top-0 z-40 flex items-center justify-between border-b border-slate-200 px-4 py-3 lg:hidden" style={{ backgroundColor: primaryColor }}>
         <Link href="/admin" className="flex items-center gap-2 text-white">
-          <img src="/jepangupdates-logo-trimmed.png" alt="Jepang Updates" className="h-8 w-auto" />
+          <img src={siteLogo} alt="Jepang Updates" className="h-8 w-auto" />
         </Link>
         <button onClick={() => setMobileOpen(!mobileOpen)} className="text-white">
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -107,12 +121,12 @@ export function AdminSidebar() {
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed inset-y-0 left-0 z-50 w-72 transform flex flex-col bg-[#1B5DAF] text-white transition-transform lg:translate-x-0 ${mobileOpen ? "translate-x-0" : "-translate-x-full"}`}>
+      <aside className={`fixed inset-y-0 left-0 z-50 w-72 transform flex flex-col text-white transition-transform lg:translate-x-0 ${mobileOpen ? "translate-x-0" : "-translate-x-full"}`} style={{ backgroundColor: primaryColor }}>
         {/* Logo */}
         <div className="px-5 py-6">
           <Link href="/" className="flex items-center gap-3">
             <img
-              src="/jepangupdates-logo-trimmed.png"
+              src={siteLogo}
               alt="Jepang Updates"
               className="h-14 w-auto"
             />
@@ -160,7 +174,7 @@ export function AdminSidebar() {
         </nav>
 
         {/* Logout - fixed bottom */}
-        <div className="sticky bottom-0 border-t border-white/10 bg-[#1B5DAF] px-4 py-4">
+        <div className="sticky bottom-0 border-t border-white/10 px-4 py-4" style={{ backgroundColor: primaryColor }}>
           <button
             onClick={() => signOut({ callbackUrl: "/login" })}
             className="flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-sm font-bold text-white/70 transition hover:bg-red-500/20 hover:text-red-200"

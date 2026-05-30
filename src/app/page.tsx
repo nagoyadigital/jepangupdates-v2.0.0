@@ -122,8 +122,6 @@ export default async function Home() {
                 </div>
               </section>
 
-              <InlineAd />
-
               {/* Music Section */}
               {musicArticles.length > 0 && (
                 <section className="mt-8">
@@ -156,8 +154,6 @@ export default async function Home() {
                   </div>
                 </section>
               )}
-
-              <InlineAd />
 
               {/* Artikel Populer - grid */}
               {latestArticles.length > 5 && (
@@ -265,9 +261,6 @@ export default async function Home() {
           {/* Dynamic layout widgets for sidebar */}
         </aside>
       </main>
-
-      {/* Desktop side ads - kiri & kanan */}
-      <SideAds />
 
       <Footer />
     </div>

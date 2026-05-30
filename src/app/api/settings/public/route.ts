@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma";
 export async function GET() {
   const settings = await prisma.siteSetting.findMany({
     where: {
-      group: { in: ["general", "social", "contact", "appearance"] },
+      group: { in: ["general", "social", "contact", "appearance", "footer"] },
     },
   });
 

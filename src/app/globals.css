@@ -1,9 +1,51 @@
 @import "tailwindcss";
 
+/* Hide scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-width: none;
+}
+
 :root {
   --background: #f4f7fb;
-  --foreground: #1b5daf;
+  --foreground: #111827;
+  --color-primary: transparent;
+  --color-accent: transparent;
+  --color-danger: transparent;
+  --footer-bg: transparent;
+  --footer-text: #ffffff;
+  --footer-border: transparent;
 }
+
+/* Dynamic color overrides - follows admin settings */
+/* Primary color (blue) */
+.text-\[\#1B5DAF\] { color: var(--color-primary) !important; }
+.bg-\[\#1B5DAF\] { background-color: var(--color-primary) !important; }
+.border-\[\#1B5DAF\] { border-color: var(--color-primary) !important; }
+.hover\:text-\[\#1B5DAF\]:hover { color: var(--color-primary) !important; }
+.hover\:bg-\[\#1B5DAF\]:hover { background-color: var(--color-primary) !important; }
+.fill-\[\#1B5DAF\] { fill: var(--color-primary) !important; }
+
+/* Accent color (yellow) */
+.text-\[\#F5A91B\] { color: var(--color-accent) !important; }
+.bg-\[\#F5A91B\] { background-color: var(--color-accent) !important; }
+.hover\:text-\[\#F5A91B\]:hover { color: var(--color-accent) !important; }
+.hover\:bg-\[\#F5A91B\]:hover { background-color: var(--color-accent) !important; }
+
+/* Danger/line color (red) */
+.border-\[\#E6372E\] { border-color: var(--color-danger) !important; }
+.bg-\[\#E6372E\] { background-color: var(--color-danger) !important; }
+.text-\[\#E6372E\] { color: var(--text-category) !important; }
+.text-red-600 { color: var(--text-category) !important; }
+
+/* Heading text */
+.text-\[\#111827\] { color: var(--text-heading) !important; }
+
+/* Muted text */
+.text-slate-500 { color: var(--text-muted) !important; }
 
 @theme inline {
   --color-background: var(--background);

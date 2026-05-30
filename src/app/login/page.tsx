@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import { Eye, EyeOff } from "lucide-react";
 
 export default function LoginPage() {
@@ -13,6 +12,36 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // Dynamic settings
+  const [siteLogo, setSiteLogo] = useState("");
+  const [logoReady, setLogoReady] = useState(false);
+  const [footerCopyright, setFooterCopyright] = useState("© 2026 Jepang Updates. All rights reserved.");
+  const [footerDeveloperText, setFooterDeveloperText] = useState("Developed by");
+  const [footerDeveloperName, setFooterDeveloperName] = useState("Nagoya Digital");
+  const [footerDeveloperUrl, setFooterDeveloperUrl] = useState("https://nagoyadigital.com");
+  const [showDeveloper, setShowDeveloper] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/settings/public")
+      .then((r) => (r.ok ? r.json() : {}))
+      .then((data) => {
+        const general = data?.general || {};
+        const footer = data?.footer || {};
+
+        // Logo: prioritas site_logo dari settings
+        if (general.site_logo) setSiteLogo(general.site_logo);
+        setLogoReady(true);
+
+        // Footer settings
+        if (footer.footer_copyright) setFooterCopyright(footer.footer_copyright);
+        if (footer.footer_developer_text) setFooterDeveloperText(footer.footer_developer_text);
+        if (footer.footer_developer_name) setFooterDeveloperName(footer.footer_developer_name);
+        if (footer.footer_developer_url) setFooterDeveloperUrl(footer.footer_developer_url);
+        if (footer.footer_show_developer === "false") setShowDeveloper(false);
+      })
+      .catch(() => setLogoReady(true));
+  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -36,18 +65,16 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#F4F7FB] px-4">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-[#F4F7FB] px-4">
       <div className="w-full max-w-md">
         <div className="rounded-xl bg-white p-8 shadow-lg">
           {/* Logo */}
           <div className="mb-8 flex justify-center">
-            <Image
-              src="/jepangupdates-logo-trimmed.png"
-              alt="Jepang Updates"
-              width={180}
-              height={50}
-              className="h-12 w-auto"
-            />
+            {logoReady && siteLogo ? (
+              <img src={siteLogo} alt="Logo" className="h-12 w-auto object-contain" />
+            ) : (
+              <div className="h-12 w-36 animate-pulse rounded bg-slate-200" />
+            )}
           </div>
 
           <h1 className="mb-2 text-center text-2xl font-black text-[#111827]">
@@ -114,9 +141,23 @@ export default function LoginPage() {
           </form>
         </div>
 
-        <p className="mt-6 text-center text-xs text-slate-400">
-          © 2026 Jepang Updates. All rights reserved.
-        </p>
+        {/* Footer */}
+        <div className="mt-6 text-center text-xs text-slate-400">
+          <p>{footerCopyright}</p>
+          {showDeveloper && (
+            <p className="mt-1">
+              {footerDeveloperText}{" "}
+              <a
+                href={footerDeveloperUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-slate-500 hover:text-slate-700"
+              >
+                {footerDeveloperName}
+              </a>
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

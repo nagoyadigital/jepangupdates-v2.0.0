@@ -26,6 +26,8 @@ export default function SettingsPage() {
           site_url: "https://jepangupdates.com",
           site_logo: "/jepangupdates-logo-trimmed.png",
           site_favicon: "/jepangupdates-logo-trimmed.png",
+          footer_logo: "",
+          admin_logo: "",
           site_language: "id",
         },
         social: {
@@ -55,8 +57,30 @@ export default function SettingsPage() {
           show_prayer_times: "true",
           primary_color: "#1B5DAF",
           accent_color: "#F5A91B",
+          danger_color: "#E6372E",
+          text_heading: "#111827",
+          text_body: "#111827",
+          text_link: "#1B5DAF",
+          text_muted: "#64748b",
+          text_category: "#E6372E",
+          nav_bg: "#1B5DAF",
+          nav_text: "#ffffff",
+          font_family: "Montserrat",
           comment_mode: "disabled",
           show_author: "true",
+        },
+        footer: {
+          footer_description: "Portal berita Jepang berbahasa Indonesia untuk pekerja, pelajar, pelaku bisnis, dan komunitas Indonesia di Jepang.",
+          footer_copyright: "© 2026 Jepang Updates. All rights reserved.",
+          footer_developer_text: "Developed by",
+          footer_developer_name: "Nagoya Digital",
+          footer_developer_url: "https://nagoyadigital.com",
+          footer_bg_color: "#1B5DAF",
+          footer_text_color: "#ffffff",
+          footer_border_color: "#E51B23",
+          footer_show_logo: "true",
+          footer_show_description: "true",
+          footer_show_developer: "true",
         },
       };
 
@@ -111,6 +135,7 @@ export default function SettingsPage() {
     { id: "social", label: "Social Media", icon: Share2 },
     { id: "contact", label: "Kontak & Email", icon: Mail },
     { id: "appearance", label: "Tampilan", icon: Palette },
+    { id: "footer", label: "Footer", icon: Globe },
     { id: "ai", label: "AI Writer", icon: Globe },
   ];
 
@@ -119,6 +144,7 @@ export default function SettingsPage() {
   const social = settings.social || {};
   const contact = settings.contact || {};
   const appearance = settings.appearance || {};
+  const footer = settings.footer || {};
 
   return (
     <div className="min-h-screen bg-[#F4F7FB] lg:flex">
@@ -254,6 +280,57 @@ export default function SettingsPage() {
                       <p className="mt-1 text-[11px] text-slate-400">Rekomendasi: PNG 192×192px, tanpa background</p>
                     </div>
                   </div>
+
+                  {/* Logo Footer & Admin */}
+                  <div className="grid gap-6 sm:grid-cols-2">
+                    <div>
+                      <label className="mb-2 block text-sm font-bold text-slate-700">Logo Footer</label>
+                      <div className="rounded-lg border-2 border-dashed border-slate-200 bg-slate-50 p-4 text-center">
+                        {general.footer_logo ? (
+                          <img src={general.footer_logo} alt="Logo Footer" className="mx-auto h-12 w-auto object-contain" />
+                        ) : (
+                          <div className="py-4 text-xs text-slate-400">Sama dengan Logo Website</div>
+                        )}
+                      </div>
+                      <div className="mt-3 flex gap-2">
+                        <input type="text" value={general.footer_logo || ""} onChange={(e) => updateSetting("general", "footer_logo", e.target.value)} placeholder="Kosongkan = pakai Logo Website" className="min-w-0 flex-1 rounded-md border px-3 py-2 text-sm" />
+                        <label className="inline-flex cursor-pointer items-center rounded-md bg-[#1B5DAF] px-3 py-2 text-xs font-bold text-white hover:bg-[#154A8F]">
+                          Upload
+                          <input type="file" accept="image/*" className="hidden" onChange={async (e) => {
+                            const file = e.target.files?.[0]; if (!file) return;
+                            const fd = new FormData(); fd.append("file", file);
+                            const res = await fetch("/api/admin/media", { method: "POST", body: fd });
+                            if (res.ok) { const m = await res.json(); updateSetting("general", "footer_logo", m.url); }
+                          }} />
+                        </label>
+                      </div>
+                      <p className="mt-1 text-[11px] text-slate-400">Kosongkan untuk menggunakan Logo Website. Rekomendasi: PNG transparan</p>
+                    </div>
+
+                    <div>
+                      <label className="mb-2 block text-sm font-bold text-slate-700">Logo Admin Dashboard</label>
+                      <div className="rounded-lg border-2 border-dashed border-slate-200 bg-slate-50 p-4 text-center">
+                        {general.admin_logo ? (
+                          <img src={general.admin_logo} alt="Logo Admin" className="mx-auto h-12 w-auto object-contain" />
+                        ) : (
+                          <div className="py-4 text-xs text-slate-400">Sama dengan Logo Website</div>
+                        )}
+                      </div>
+                      <div className="mt-3 flex gap-2">
+                        <input type="text" value={general.admin_logo || ""} onChange={(e) => updateSetting("general", "admin_logo", e.target.value)} placeholder="Kosongkan = pakai Logo Website" className="min-w-0 flex-1 rounded-md border px-3 py-2 text-sm" />
+                        <label className="inline-flex cursor-pointer items-center rounded-md bg-[#1B5DAF] px-3 py-2 text-xs font-bold text-white hover:bg-[#154A8F]">
+                          Upload
+                          <input type="file" accept="image/*" className="hidden" onChange={async (e) => {
+                            const file = e.target.files?.[0]; if (!file) return;
+                            const fd = new FormData(); fd.append("file", file);
+                            const res = await fetch("/api/admin/media", { method: "POST", body: fd });
+                            if (res.ok) { const m = await res.json(); updateSetting("general", "admin_logo", m.url); }
+                          }} />
+                        </label>
+                      </div>
+                      <p className="mt-1 text-[11px] text-slate-400">Kosongkan untuk menggunakan Logo Website. Tampil di sidebar admin</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
@@ -352,6 +429,11 @@ export default function SettingsPage() {
             {activeTab === "appearance" && (
               <div className="rounded-lg border border-slate-200 bg-white p-6 space-y-5">
                 <h3 className="text-lg font-black text-[#111827]">Pengaturan Tampilan</h3>
+                
+                <div className="rounded-md bg-blue-50 p-4 text-sm text-blue-700">
+                  <strong>🎨 Pengaturan Warna & Tema</strong> telah dipindahkan ke halaman khusus untuk pengalaman yang lebih baik. <a href="/admin/theme" className="font-bold underline">Buka Warna & Tema →</a>
+                </div>
+
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div>
                     <label className="mb-1 block text-sm font-bold text-slate-700">Artikel per Halaman</label>
@@ -379,18 +461,20 @@ export default function SettingsPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="mb-1 block text-sm font-bold text-slate-700">Warna Utama</label>
-                    <div className="flex gap-2">
-                      <input type="color" value={appearance.primary_color || "#1B5DAF"} onChange={(e) => updateSetting("appearance", "primary_color", e.target.value)} className="h-10 w-14 rounded border" />
-                      <input type="text" value={appearance.primary_color || "#1B5DAF"} onChange={(e) => updateSetting("appearance", "primary_color", e.target.value)} className="flex-1 rounded-md border px-3 py-2.5 text-sm" />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="mb-1 block text-sm font-bold text-slate-700">Warna Aksen</label>
-                    <div className="flex gap-2">
-                      <input type="color" value={appearance.accent_color || "#F5A91B"} onChange={(e) => updateSetting("appearance", "accent_color", e.target.value)} className="h-10 w-14 rounded border" />
-                      <input type="text" value={appearance.accent_color || "#F5A91B"} onChange={(e) => updateSetting("appearance", "accent_color", e.target.value)} className="flex-1 rounded-md border px-3 py-2.5 text-sm" />
-                    </div>
+                    <label className="mb-1 block text-sm font-bold text-slate-700">Font Website</label>
+                    <select value={appearance.font_family || "Montserrat"} onChange={(e) => updateSetting("appearance", "font_family", e.target.value)} className="w-full rounded-md border px-4 py-2.5 text-sm">
+                      <option value="Montserrat">Montserrat</option>
+                      <option value="Inter">Inter</option>
+                      <option value="Poppins">Poppins</option>
+                      <option value="Roboto">Roboto</option>
+                      <option value="Open Sans">Open Sans</option>
+                      <option value="Lato">Lato</option>
+                      <option value="Nunito">Nunito</option>
+                      <option value="Raleway">Raleway</option>
+                      <option value="Plus Jakarta Sans">Plus Jakarta Sans</option>
+                      <option value="DM Sans">DM Sans</option>
+                      <option value="Noto Sans">Noto Sans</option>
+                    </select>
                   </div>
                   <div>
                     <label className="mb-1 block text-sm font-bold text-slate-700">Mode Komentar</label>
@@ -407,6 +491,66 @@ export default function SettingsPage() {
                       <option value="false">Tidak</option>
                     </select>
                   </div>
+                </div>
+              </div>
+            )}
+
+            {/* Tab: Footer */}
+            {activeTab === "footer" && (
+              <div className="rounded-lg border border-slate-200 bg-white p-6 space-y-5">
+                <h3 className="text-lg font-black text-[#111827]">Pengaturan Footer</h3>
+                <p className="text-sm text-slate-500">Kelola tampilan footer website. Untuk mengubah link menu footer, gunakan halaman Menu Navigasi.</p>
+                <div className="grid gap-5">
+                  <div>
+                    <label className="mb-1 block text-sm font-bold text-slate-700">Deskripsi Footer</label>
+                    <textarea value={footer.footer_description || ""} onChange={(e) => updateSetting("footer", "footer_description", e.target.value)} className="w-full rounded-md border px-4 py-2.5 text-sm min-h-[80px]" placeholder="Deskripsi singkat tentang website" />
+                  </div>
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <div>
+                      <label className="mb-1 block text-sm font-bold text-slate-700">Tampilkan Logo</label>
+                      <select value={footer.footer_show_logo || "true"} onChange={(e) => updateSetting("footer", "footer_show_logo", e.target.value)} className="w-full rounded-md border px-4 py-2.5 text-sm">
+                        <option value="true">Ya</option>
+                        <option value="false">Tidak</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div>
+                    <label className="mb-1 block text-sm font-bold text-slate-700">Teks Copyright</label>
+                    <input value={footer.footer_copyright || ""} onChange={(e) => updateSetting("footer", "footer_copyright", e.target.value)} className="w-full rounded-md border px-4 py-2.5 text-sm" placeholder="© 2026 Jepang Updates. All rights reserved." />
+                  </div>
+                  <div className="grid gap-5 sm:grid-cols-3">
+                    <div>
+                      <label className="mb-1 block text-sm font-bold text-slate-700">Developer Text</label>
+                      <input value={footer.footer_developer_text || ""} onChange={(e) => updateSetting("footer", "footer_developer_text", e.target.value)} className="w-full rounded-md border px-4 py-2.5 text-sm" placeholder="Developed by" />
+                    </div>
+                    <div>
+                      <label className="mb-1 block text-sm font-bold text-slate-700">Developer Name</label>
+                      <input value={footer.footer_developer_name || ""} onChange={(e) => updateSetting("footer", "footer_developer_name", e.target.value)} className="w-full rounded-md border px-4 py-2.5 text-sm" placeholder="Nagoya Digital" />
+                    </div>
+                    <div>
+                      <label className="mb-1 block text-sm font-bold text-slate-700">Developer URL</label>
+                      <input value={footer.footer_developer_url || ""} onChange={(e) => updateSetting("footer", "footer_developer_url", e.target.value)} className="w-full rounded-md border px-4 py-2.5 text-sm" placeholder="https://nagoyadigital.com" />
+                    </div>
+                  </div>
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <div>
+                      <label className="mb-1 block text-sm font-bold text-slate-700">Tampilkan Deskripsi</label>
+                      <select value={footer.footer_show_description || "true"} onChange={(e) => updateSetting("footer", "footer_show_description", e.target.value)} className="w-full rounded-md border px-4 py-2.5 text-sm">
+                        <option value="true">Ya</option>
+                        <option value="false">Tidak</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="mb-1 block text-sm font-bold text-slate-700">Tampilkan Developer Credit</label>
+                      <select value={footer.footer_show_developer || "true"} onChange={(e) => updateSetting("footer", "footer_show_developer", e.target.value)} className="w-full rounded-md border px-4 py-2.5 text-sm">
+                        <option value="true">Ya</option>
+                        <option value="false">Tidak</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-4 rounded-md bg-blue-50 p-4 text-sm text-blue-700">
+                  <strong>🎨 Warna Footer</strong> diatur di halaman <a href="/admin/theme" className="font-bold underline">Warna & Tema</a>. <strong>💡 Link Footer</strong> diatur di <a href="/admin/menus" className="font-bold underline">Menu Navigasi</a>.
                 </div>
               </div>
             )}

@@ -183,7 +183,7 @@ export default async function ArticlePage({ params }: PageProps) {
         authorImage={article.author.image || undefined}
         category={article.category.name}
         categorySlug={article.category.slug}
-        tags={article.tags.map(t => t.tag.name)}
+        tags={article.tags.map((t: any) => t.tag.name)}
         wordCount={wordCount}
       />
 
@@ -255,7 +255,7 @@ export default async function ArticlePage({ params }: PageProps) {
               <div className="sticky top-[120px]">
                 <h2 className="border-b-2 border-[#E6372E] pb-2 text-sm font-black uppercase text-black">Berita Terkait</h2>
                 <div className="mt-4 space-y-4">
-                  {relatedArticles.slice(0, 6).map((item) => (
+                  {relatedArticles.slice(0, 6).map((item: any) => (
                     <Link href={`/${item.slug}`} className="block text-[13px] font-bold leading-5 text-[#111827] hover:text-[#1B5DAF]" key={item.slug}>
                       {item.title}
                     </Link>
