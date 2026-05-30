@@ -45,7 +45,7 @@ export function Footer() {
   useEffect(() => {
     fetch("/api/settings/public")
       .then(r => r.ok ? r.json() : {})
-      .then((data) => {
+      .then((data: Record<string, Record<string, string>>) => {
         const footerData = data?.footer || {};
         const generalData = data?.general || {};
         

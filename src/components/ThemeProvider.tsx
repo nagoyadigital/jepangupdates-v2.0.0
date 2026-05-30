@@ -6,7 +6,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     fetch("/api/settings/public")
       .then((r) => (r.ok ? r.json() : {}))
-      .then((data) => {
+      .then((data: Record<string, Record<string, string>>) => {
         const a = data?.appearance || {};
         const f = data?.footer || {};
         const root = document.documentElement;

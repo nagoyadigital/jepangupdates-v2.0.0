@@ -64,7 +64,7 @@ export default function ThemePage() {
   useEffect(() => {
     fetch("/api/admin/settings")
       .then(r => r.ok ? r.json() : {})
-      .then(data => {
+      .then((data: Record<string, Record<string, string>>) => {
         const appearance = data?.appearance || {};
         const footer = data?.footer || {};
         const merged = { ...defaultColors };

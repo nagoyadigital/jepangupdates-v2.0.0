@@ -14,6 +14,7 @@ import { getWidgetConfig, isWidgetEnabled } from "@/lib/widgets";
 import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 120; // ISR: revalidate every 2 minutes
 
 type PageProps = {
   params: Promise<{ slug: string }>;

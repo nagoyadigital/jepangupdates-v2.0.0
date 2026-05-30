@@ -25,7 +25,7 @@ export default function LoginPage() {
   useEffect(() => {
     fetch("/api/settings/public")
       .then((r) => (r.ok ? r.json() : {}))
-      .then((data) => {
+      .then((data: Record<string, Record<string, string>>) => {
         const general = data?.general || {};
         const footer = data?.footer || {};
 

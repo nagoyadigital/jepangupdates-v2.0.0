@@ -14,6 +14,7 @@ import { getWidgetConfig, isWidgetEnabled } from "@/lib/widgets";
 import { formatDateID } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 60; // ISR: revalidate every 60 seconds
 
 export default async function Home() {
   const [headlineArticles, latestArticles, trendingArticles, categories, musicArticles, jepangArticles, widgetConfig] = await Promise.all([

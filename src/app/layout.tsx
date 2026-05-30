@@ -8,9 +8,10 @@ import "./globals.css";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "600", "700", "800", "900"],
   display: "swap",
   variable: "--font-montserrat",
+  preload: true,
 });
 
 import { prisma } from "@/lib/prisma";

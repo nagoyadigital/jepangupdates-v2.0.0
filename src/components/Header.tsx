@@ -34,7 +34,7 @@ export function Header() {
     // Fetch site logo
     fetch("/api/settings/public")
       .then(r => r.ok ? r.json() : {})
-      .then(data => {
+      .then((data: Record<string, Record<string, string>>) => {
         if (data?.general?.site_logo) setSiteLogo(data.general.site_logo);
         setLogoReady(true);
       })

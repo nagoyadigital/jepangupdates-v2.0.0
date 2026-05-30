@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
   // Performance optimizations
   compress: true,
   poweredByHeader: false,
-  // Security headers
+  // Security headers + caching
   headers: async () => [
     {
       source: "/(.*)",
@@ -33,6 +33,20 @@ const nextConfig: NextConfig = {
       source: "/uploads/(.*)",
       headers: [
         { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+      ],
+    },
+    {
+      // Cache static assets aggressively
+      source: "/:path*.(svg|jpg|jpeg|png|webp|avif|ico|woff|woff2)",
+      headers: [
+        { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+      ],
+    },
+    {
+      // Cache API public settings (short TTL for freshness)
+      source: "/api/settings/public",
+      headers: [
+        { key: "Cache-Control", value: "public, s-maxage=60, stale-while-revalidate=300" },
       ],
     },
   ],

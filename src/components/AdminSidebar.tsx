@@ -71,7 +71,7 @@ export function AdminSidebar() {
   useEffect(() => {
     fetch("/api/settings/public")
       .then((r) => (r.ok ? r.json() : {}))
-      .then((data) => {
+      .then((data: Record<string, Record<string, string>>) => {
         if (data?.appearance?.primary_color) setPrimaryColor(data.appearance.primary_color);
         else setPrimaryColor("#1B5DAF");
         const general = data?.general || {};

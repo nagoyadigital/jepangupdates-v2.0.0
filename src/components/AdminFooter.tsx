@@ -12,7 +12,7 @@ export function AdminFooter() {
   useEffect(() => {
     fetch("/api/settings/public")
       .then((r) => (r.ok ? r.json() : {}))
-      .then((data) => {
+      .then((data: Record<string, Record<string, string>>) => {
         const footer = data?.footer || {};
         setCopyright(footer.footer_copyright || "© 2026 Jepang Updates. All rights reserved.");
         setDeveloperText(footer.footer_developer_text || "Developed by");
