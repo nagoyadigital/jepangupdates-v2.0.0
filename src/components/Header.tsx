@@ -74,7 +74,7 @@ export function Header() {
   return (
     <header className="bg-white">
       <div className="mx-auto grid max-w-6xl grid-cols-[168px_1fr] items-center gap-3 px-4 py-3 sm:grid-cols-[190px_minmax(220px,1fr)_190px] sm:gap-4 sm:px-6 sm:py-4 lg:grid-cols-[240px_1fr_250px] lg:px-8">
-        <Link href="/" className="flex h-[54px] items-center sm:h-[56px] lg:h-[66px]" aria-label="Jepang Updates homepage">
+        <Link href="/" className="flex h-[54px] items-center sm:h-[56px] lg:h-[66px]" aria-label="Japan Populer homepage">
           {logoReady && siteLogo ? (
             <img src={siteLogo} alt="Logo" className="h-full w-auto object-contain" />
           ) : (
@@ -85,10 +85,10 @@ export function Header() {
         <SearchForm className="hidden sm:order-none sm:col-span-1 sm:mx-auto sm:flex sm:h-10 sm:w-full sm:max-w-sm lg:h-11 lg:max-w-md" />
 
         <div className="hidden items-center justify-end gap-2.5 sm:flex lg:gap-3">
-          <SocialIcon href="https://facebook.com/jepangupdates" label="Facebook" icon="facebook" />
-          <SocialIcon href="https://instagram.com/jepangupdates" label="Instagram" icon="instagram" />
-          <SocialIcon href="https://youtube.com/@jepangupdates" label="YouTube" icon="youtube" />
-          <SocialIcon href="https://tiktok.com/@jepangupdates" label="TikTok" icon="tiktok" />
+          <SocialIcon href="https://facebook.com/japanpopuler" label="Facebook" icon="facebook" />
+          <SocialIcon href="https://instagram.com/japanpopuler" label="Instagram" icon="instagram" />
+          <SocialIcon href="https://youtube.com/@japanpopuler" label="YouTube" icon="youtube" />
+          <SocialIcon href="https://tiktok.com/@japanpopuler" label="TikTok" icon="tiktok" />
         </div>
 
         <button
@@ -121,10 +121,10 @@ export function Header() {
         <div className="border-t border-slate-100 bg-white px-4 pb-5 shadow-lg sm:hidden">
           <SearchForm className="flex h-11 w-full overflow-hidden rounded-[13px] border-2 border-[#1B5DAF] bg-white" />
           <div className="mt-4 flex items-center justify-center gap-3">
-            <SocialIcon href="https://facebook.com/jepangupdates" label="Facebook" icon="facebook" />
-            <SocialIcon href="https://instagram.com/jepangupdates" label="Instagram" icon="instagram" />
-            <SocialIcon href="https://youtube.com/@jepangupdates" label="YouTube" icon="youtube" />
-            <SocialIcon href="https://tiktok.com/@jepangupdates" label="TikTok" icon="tiktok" />
+            <SocialIcon href="https://facebook.com/japanpopuler" label="Facebook" icon="facebook" />
+            <SocialIcon href="https://instagram.com/japanpopuler" label="Instagram" icon="instagram" />
+            <SocialIcon href="https://youtube.com/@japanpopuler" label="YouTube" icon="youtube" />
+            <SocialIcon href="https://tiktok.com/@japanpopuler" label="TikTok" icon="tiktok" />
           </div>
           <div className="mt-5 grid grid-cols-2 gap-2">
             {mobileItems.filter((item, idx, arr) => arr.findIndex(i => i.url === item.url) === idx).map((item) => (

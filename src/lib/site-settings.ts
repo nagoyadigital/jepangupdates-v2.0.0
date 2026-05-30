@@ -28,7 +28,7 @@ const defaults: SiteSettings = {
   site_name: "Jepang Updates",
   site_tagline: "Portal Berita Komunitas Indonesia di Jepang",
   site_description: "",
-  site_url: "https://jepangupdates.com",
+  site_url: process.env.NEXT_PUBLIC_SITE_URL || "https://japanpopuler.com",
   site_logo: "/jepangupdates-logo-trimmed.png",
   site_favicon: "/favicon.ico",
   site_language: "id",

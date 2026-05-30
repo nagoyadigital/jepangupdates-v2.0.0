@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const siteName = s.site_name || "Jepang Updates";
   const tagline = s.site_tagline || "Portal Berita Komunitas Indonesia di Jepang";
   const description = s.site_description || "Portal berita komunitas Indonesia di Jepang.";
-  const siteUrl = s.site_url || "https://jepangupdates.com";
+  const siteUrl = s.site_url || process.env.NEXT_PUBLIC_SITE_URL || "https://japanpopuler.com";
   const favicon = s.site_favicon || "/fav-icon.PNG";
 
   return {
@@ -87,8 +87,8 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#1B5DAF" />
         {/* Hreflang */}
-        <link rel="alternate" hrefLang="id" href="https://jepangupdates.com" />
-        <link rel="alternate" hrefLang="x-default" href="https://jepangupdates.com" />
+        <link rel="alternate" hrefLang="id" href={process.env.NEXT_PUBLIC_SITE_URL || "https://japanpopuler.com"} />
+        <link rel="alternate" hrefLang="x-default" href={process.env.NEXT_PUBLIC_SITE_URL || "https://japanpopuler.com"} />
         <SeoHead />
       </head>
       <body className="min-h-full flex flex-col">

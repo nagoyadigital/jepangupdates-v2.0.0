@@ -25,7 +25,7 @@ const defaults: SeoConfig = {
   site_tagline: "Informasi terkini seputar pekerjaan, imigrasi, event, dan kehidupan di Jepang",
   meta_description: "Portal berita komunitas Indonesia di Jepang. Informasi terkini seputar pekerjaan, imigrasi, event, dan kehidupan di Jepang.",
   meta_keywords: "jepang, berita jepang, indonesia di jepang, pekerjaan jepang",
-  canonical_domain: "https://jepangupdates.com",
+  canonical_domain: process.env.NEXT_PUBLIC_SITE_URL || "https://japanpopuler.com",
   og_image: "/jepangupdates-logo.png",
   og_type: "website",
   twitter_handle: "@jepangupdates",

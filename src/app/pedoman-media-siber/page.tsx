@@ -2,8 +2,8 @@ import { Footer } from "@/components/Footer";
 import { StickySiteHeader } from "@/components/StickySiteHeader";
 
 export const metadata = {
-  title: "Pedoman Media Siber - Jepang Updates",
-  description: "Pedoman pemberitaan media siber Jepang Updates sesuai standar jurnalistik.",
+  title: "Pedoman Media Siber - Japan Populer",
+  description: "Pedoman pemberitaan media siber Japan Populer sesuai standar jurnalistik.",
 };
 
 export default function PedomanMediaSiber() {
@@ -37,7 +37,7 @@ export default function PedomanMediaSiber() {
           <section>
             <h2 className="text-xl font-black text-[#111827]">1. Ruang Lingkup</h2>
             <p className="mt-3">
-              Jepang Updates adalah media siber berbahasa Indonesia yang menyajikan informasi seputar kehidupan komunitas Indonesia di Jepang, meliputi berita, pendidikan, pekerjaan, hiburan, olahraga, dan budaya. Pedoman ini mengatur prinsip-prinsip jurnalistik yang kami terapkan dalam setiap pemberitaan.
+              Japan Populer adalah media siber berbahasa Indonesia yang menyajikan informasi seputar kehidupan komunitas Indonesia di Jepang, meliputi berita, pendidikan, pekerjaan, hiburan, olahraga, dan budaya. Pedoman ini mengatur prinsip-prinsip jurnalistik yang kami terapkan dalam setiap pemberitaan.
             </p>
           </section>
 
@@ -54,7 +54,7 @@ export default function PedomanMediaSiber() {
           <section>
             <h2 className="text-xl font-black text-[#111827]">3. Keberimbangan</h2>
             <p className="mt-3">
-              Jepang Updates menerapkan prinsip keberimbangan (cover both sides) dalam pemberitaan. Pihak yang diberitakan secara negatif diberikan kesempatan untuk memberikan klarifikasi atau tanggapan.
+              Japan Populer menerapkan prinsip keberimbangan (cover both sides) dalam pemberitaan. Pihak yang diberitakan secara negatif diberikan kesempatan untuk memberikan klarifikasi atau tanggapan.
             </p>
           </section>
 
@@ -96,7 +96,7 @@ export default function PedomanMediaSiber() {
           <section>
             <h2 className="text-xl font-black text-[#111827]">8. Perlindungan Privasi</h2>
             <p className="mt-3">
-              Jepang Updates menghormati privasi narasumber dan subjek berita. Identitas korban kejahatan, anak di bawah umur, dan pihak yang meminta perlindungan identitas akan dirahasiakan sesuai ketentuan hukum yang berlaku.
+              Japan Populer menghormati privasi narasumber dan subjek berita. Identitas korban kejahatan, anak di bawah umur, dan pihak yang meminta perlindungan identitas akan dirahasiakan sesuai ketentuan hukum yang berlaku.
             </p>
           </section>
 
@@ -104,7 +104,7 @@ export default function PedomanMediaSiber() {
             <h2 className="text-xl font-black text-[#111827]">9. Kontak Redaksi</h2>
             <p className="mt-3">
               Pengaduan, saran, dan permintaan hak jawab dapat disampaikan ke:<br />
-              Email: <a href="mailto:redaksi@jepangupdates.com" className="font-bold text-[#1B5DAF] hover:underline">redaksi@jepangupdates.com</a><br />
+              Email: <a href="mailto:redaksi@japanpopuler.com" className="font-bold text-[#1B5DAF] hover:underline">redaksi@japanpopuler.com</a><br />
               Atau melalui halaman <a href="/kontak" className="font-bold text-[#1B5DAF] hover:underline">Kontak</a>.
             </p>
           </section>

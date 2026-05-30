@@ -168,7 +168,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
   // Calculate word count for SEO
   const wordCount = article.content.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean).length;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jepangupdates.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://japanpopuler.com";
 
   return (
     <div className="min-h-screen bg-white text-[#111827]">

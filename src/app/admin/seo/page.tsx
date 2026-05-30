@@ -35,22 +35,22 @@ type SeoSettings = {
 };
 
 const defaultSettings: SeoSettings = {
-  site_title: "Jepang Updates - Portal Berita Komunitas Indonesia di Jepang",
-  site_tagline: "Informasi terkini seputar pekerjaan, imigrasi, event, dan kehidupan di Jepang",
-  meta_description: "Portal berita komunitas Indonesia di Jepang. Informasi terkini seputar pekerjaan, imigrasi, event, dan kehidupan di Jepang.",
-  meta_keywords: "jepang, berita jepang, indonesia di jepang, pekerjaan jepang, tokutei ginou, SSW, komunitas indonesia jepang",
-  canonical_domain: "https://jepangupdates.com",
-  og_image: "/jepangupdates-logo.png",
+  site_title: "Japan Populer - Portal Berita Jepang Terpopuler",
+  site_tagline: "Informasi terkini seputar Jepang, pekerjaan, imigrasi, event, dan kehidupan di Jepang",
+  meta_description: "Portal berita Jepang terpopuler. Informasi terkini seputar pekerjaan, imigrasi, event, dan kehidupan di Jepang.",
+  meta_keywords: "jepang, berita jepang, indonesia di jepang, pekerjaan jepang, tokutei ginou, SSW, komunitas indonesia jepang, japan populer",
+  canonical_domain: "https://japanpopuler.com",
+  og_image: "/japanpopuler-logo.png",
   og_type: "website",
-  twitter_handle: "@jepangupdates",
-  facebook_page: "https://facebook.com/jepangupdates",
+  twitter_handle: "@japanpopuler",
+  facebook_page: "https://facebook.com/japanpopuler",
   google_verification: "",
   bing_verification: "",
   yandex_verification: "",
   pinterest_verification: "",
   google_analytics_id: "",
   gtm_id: "",
-  robots_txt: "User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /api/\n\nSitemap: https://jepangupdates.com/sitemap.xml",
+  robots_txt: "User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /api/\n\nSitemap: https://japanpopuler.com/sitemap.xml",
   head_scripts: "",
   body_scripts: "",
   noindex_categories: "false",
@@ -179,7 +179,7 @@ export default function AdminSeoPage() {
                   <input type="text" value={settings.meta_keywords} onChange={(e) => updateField("meta_keywords", e.target.value)} className="w-full rounded-md border px-3 py-2.5 text-sm" placeholder="jepang, berita, indonesia" />
                 </Field>
                 <Field label="Canonical Domain" hint="Domain utama website. Digunakan untuk canonical URL dan sitemap.">
-                  <input type="url" value={settings.canonical_domain} onChange={(e) => updateField("canonical_domain", e.target.value)} className="w-full rounded-md border px-3 py-2.5 text-sm" placeholder="https://jepangupdates.com" />
+                  <input type="url" value={settings.canonical_domain} onChange={(e) => updateField("canonical_domain", e.target.value)} className="w-full rounded-md border px-3 py-2.5 text-sm" placeholder="https://japanpopuler.com" />
                 </Field>
               </div>
 
@@ -187,7 +187,7 @@ export default function AdminSeoPage() {
               <div className="mt-6 rounded-lg border border-slate-200 bg-slate-50 p-4">
                 <p className="text-xs font-bold text-slate-500 mb-2">📱 Preview di Google:</p>
                 <div className="rounded-md bg-white p-3 border">
-                  <p className="text-[#1a0dab] text-base font-medium truncate">{settings.site_title || "Jepang Updates"}</p>
+                  <p className="text-[#1a0dab] text-base font-medium truncate">{settings.site_title || "Japan Populer"}</p>
                   <p className="text-[#006621] text-xs mt-0.5">{settings.canonical_domain}</p>
                   <p className="text-[#545454] text-xs mt-1 line-clamp-2">{settings.meta_description || "Deskripsi website..."}</p>
                 </div>
@@ -216,10 +216,10 @@ export default function AdminSeoPage() {
                   </select>
                 </Field>
                 <Field label="Twitter Handle" hint="Username Twitter/X tanpa @. Untuk Twitter Card attribution.">
-                  <input type="text" value={settings.twitter_handle} onChange={(e) => updateField("twitter_handle", e.target.value)} className="w-full rounded-md border px-3 py-2.5 text-sm" placeholder="@jepangupdates" />
+                  <input type="text" value={settings.twitter_handle} onChange={(e) => updateField("twitter_handle", e.target.value)} className="w-full rounded-md border px-3 py-2.5 text-sm" placeholder="@japanpopuler" />
                 </Field>
                 <Field label="Facebook Page URL" hint="URL halaman Facebook untuk og:see_also.">
-                  <input type="url" value={settings.facebook_page} onChange={(e) => updateField("facebook_page", e.target.value)} className="w-full rounded-md border px-3 py-2.5 text-sm" placeholder="https://facebook.com/jepangupdates" />
+                  <input type="url" value={settings.facebook_page} onChange={(e) => updateField("facebook_page", e.target.value)} className="w-full rounded-md border px-3 py-2.5 text-sm" placeholder="https://facebook.com/japanpopuler" />
                 </Field>
               </div>
             </div>

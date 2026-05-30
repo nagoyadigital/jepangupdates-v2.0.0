@@ -1,6 +1,6 @@
-const SITE_URL = "https://jepangupdates.com";
-const SITE_NAME = "Jepang Updates";
-const LOGO_URL = `${SITE_URL}/jepangupdates-logo.png`;
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://japanpopuler.com";
+const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME || "Japan Populer";
+const LOGO_URL = `${SITE_URL}/japanpopuler-logo.png`;
 
 type ArticleJsonLdProps = {
   title: string;
@@ -83,7 +83,7 @@ export function WebsiteJsonLd() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: SITE_NAME,
-    alternateName: "Jepang Updates - Portal Berita Indonesia di Jepang",
+    alternateName: "Japan Populer - Portal Berita Indonesia di Jepang",
     url: SITE_URL,
     description: "Portal berita komunitas Indonesia di Jepang. Informasi terkini seputar pekerjaan, imigrasi, event, dan kehidupan di Jepang.",
     inLanguage: "id-ID",
@@ -106,15 +106,15 @@ export function WebsiteJsonLd() {
     url: SITE_URL,
     logo: { "@type": "ImageObject", url: LOGO_URL, width: 600, height: 60 },
     sameAs: [
-      "https://facebook.com/jepangupdates",
-      "https://instagram.com/jepangupdates",
-      "https://youtube.com/@jepangupdates",
-      "https://tiktok.com/@jepangupdates",
+      "https://facebook.com/japanpopuler",
+      "https://instagram.com/japanpopuler",
+      "https://youtube.com/@japanpopuler",
+      "https://tiktok.com/@japanpopuler",
     ],
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",
-      email: "redaksi@jepangupdates.com",
+      email: "redaksi@japanpopuler.com",
       availableLanguage: ["Indonesian", "Japanese"],
     },
     foundingDate: "2024",

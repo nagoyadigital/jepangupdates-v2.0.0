@@ -2,8 +2,8 @@ import { Footer } from "@/components/Footer";
 import { StickySiteHeader } from "@/components/StickySiteHeader";
 
 export const metadata = {
-  title: "Kebijakan Privasi - Jepang Updates",
-  description: "Kebijakan privasi portal berita Jepang Updates untuk komunitas Indonesia di Jepang.",
+  title: "Kebijakan Privasi - Japan Populer",
+  description: "Kebijakan privasi portal berita Japan Populer untuk komunitas Indonesia di Jepang.",
 };
 
 export default function KebijakanPrivasi() {
@@ -18,7 +18,7 @@ export default function KebijakanPrivasi() {
           <section>
             <h2 className="text-xl font-black text-[#111827]">1. Pendahuluan</h2>
             <p className="mt-3">
-              Jepang Updates (jepangupdates.com) berkomitmen melindungi privasi pengunjung dan pengguna layanan kami. Kebijakan privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, menyimpan, dan melindungi informasi pribadi Anda saat mengakses portal berita kami.
+              Japan Populer (japanpopuler.com) berkomitmen melindungi privasi pengunjung dan pengguna layanan kami. Kebijakan privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, menyimpan, dan melindungi informasi pribadi Anda saat mengakses portal berita kami.
             </p>
           </section>
 
@@ -83,7 +83,7 @@ export default function KebijakanPrivasi() {
           <section>
             <h2 className="text-xl font-black text-[#111827]">8. Kontak</h2>
             <p className="mt-3">
-              Jika Anda memiliki pertanyaan tentang kebijakan privasi ini, silakan hubungi kami melalui email di <a href="mailto:redaksi@jepangupdates.com" className="font-bold text-[#1B5DAF] hover:underline">redaksi@jepangupdates.com</a> atau melalui halaman <a href="/kontak" className="font-bold text-[#1B5DAF] hover:underline">Kontak</a>.
+              Jika Anda memiliki pertanyaan tentang kebijakan privasi ini, silakan hubungi kami melalui email di <a href="mailto:redaksi@japanpopuler.com" className="font-bold text-[#1B5DAF] hover:underline">redaksi@japanpopuler.com</a> atau melalui halaman <a href="/kontak" className="font-bold text-[#1B5DAF] hover:underline">Kontak</a>.
             </p>
           </section>
         </div>

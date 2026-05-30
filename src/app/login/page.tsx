@@ -102,7 +102,7 @@ export default function LoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-[#1B5DAF] focus:outline-none focus:ring-1 focus:ring-[#1B5DAF]"
-                placeholder="admin@jepangupdates.com"
+                placeholder="admin@japanpopuler.com"
               />
             </div>
 

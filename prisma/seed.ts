@@ -13,15 +13,15 @@ async function main() {
   const hashedPassword = await bcrypt.hash("SuperAdmin123!", 12);
 
   const superAdmin = await prisma.user.upsert({
-    where: { email: "admin@jepangupdates.com" },
+    where: { email: "admin@japanpopuler.com" },
     update: {},
     create: {
       name: "Super Admin",
-      email: "admin@jepangupdates.com",
+      email: "admin@japanpopuler.com",
       password: hashedPassword,
       role: "SUPER_ADMIN",
       isActive: true,
-      bio: "Administrator utama Jepang Updates",
+      bio: "Administrator utama Japan Populer",
     },
   });
 
@@ -61,14 +61,14 @@ async function main() {
 
   // Create default site settings
   const defaultSettings = [
-    { key: "site_title", value: "Jepang Updates", group: "seo" },
+    { key: "site_title", value: "Japan Populer", group: "seo" },
     { key: "site_description", value: "Portal berita komunitas Indonesia di Jepang", group: "seo" },
     { key: "default_og_image", value: "/jepangupdates-logo.png", group: "seo" },
     { key: "sitemap_enabled", value: "true", group: "seo" },
-    { key: "robots_txt", value: "User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /api/admin/\nSitemap: https://jepangupdates.com/sitemap.xml", group: "seo" },
-    { key: "site_name", value: "Jepang Updates", group: "general" },
+    { key: "robots_txt", value: "User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /api/admin/\nSitemap: https://japanpopuler.com/sitemap.xml", group: "seo" },
+    { key: "site_name", value: "Japan Populer", group: "general" },
     { key: "site_tagline", value: "Portal Berita Komunitas Indonesia di Jepang", group: "general" },
-    { key: "contact_email", value: "redaksi@jepangupdates.com", group: "general" },
+    { key: "contact_email", value: "redaksi@japanpopuler.com", group: "general" },
     { key: "articles_per_page", value: "20", group: "appearance" },
     { key: "show_breaking_news", value: "true", group: "appearance" },
     { key: "show_weather_widget", value: "true", group: "appearance" },
@@ -117,7 +117,7 @@ async function main() {
   console.log(`✅ Main menu with ${menuItems.length} items created`);
 
   console.log("\n🎉 Seeding completed!");
-  console.log("📧 Login: admin@jepangupdates.com");
+  console.log("📧 Login: admin@japanpopuler.com");
   console.log("🔑 Password: SuperAdmin123!");
 }
 

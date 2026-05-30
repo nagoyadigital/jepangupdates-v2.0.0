@@ -2,8 +2,8 @@ import { Footer } from "@/components/Footer";
 import { StickySiteHeader } from "@/components/StickySiteHeader";
 
 export const metadata = {
-  title: "Pasang Iklan - Jepang Updates",
-  description: "Informasi pemasangan iklan dan kerjasama brand di portal berita Jepang Updates.",
+  title: "Pasang Iklan - Japan Populer",
+  description: "Informasi pemasangan iklan dan kerjasama brand di portal berita Japan Populer.",
 };
 
 export default function AdsPage() {
@@ -16,9 +16,9 @@ export default function AdsPage() {
 
         <div className="mt-8 space-y-8 text-[15px] leading-7 text-[#111827]">
           <section>
-            <h2 className="text-xl font-black text-[#111827]">Mengapa Beriklan di Jepang Updates?</h2>
+            <h2 className="text-xl font-black text-[#111827]">Mengapa Beriklan di Japan Populer?</h2>
             <p className="mt-3">
-              Jepang Updates adalah portal berita terkemuka untuk komunitas Indonesia di Jepang. Dengan ribuan pembaca aktif setiap hari, kami menawarkan platform yang tepat untuk menjangkau audiens Indonesia yang tinggal, bekerja, dan belajar di Jepang.
+              Japan Populer adalah portal berita terkemuka untuk komunitas Indonesia di Jepang. Dengan ribuan pembaca aktif setiap hari, kami menawarkan platform yang tepat untuk menjangkau audiens Indonesia yang tinggal, bekerja, dan belajar di Jepang.
             </p>
             <div className="mt-5 grid gap-4 sm:grid-cols-3">
               <div className="rounded-lg bg-[#1B5DAF] p-5 text-center text-white">
@@ -98,9 +98,9 @@ export default function AdsPage() {
             <div className="mt-4 rounded-lg bg-slate-50 p-5">
               <p className="font-black">Tim Bisnis & Iklan</p>
               <p className="mt-2 text-sm text-slate-600">
-                Email: <a href="mailto:iklan@jepangupdates.com" className="font-bold text-[#1B5DAF] hover:underline">iklan@jepangupdates.com</a><br />
+                Email: <a href="mailto:iklan@japanpopuler.com" className="font-bold text-[#1B5DAF] hover:underline">iklan@japanpopuler.com</a><br />
                 WhatsApp: <a href="https://wa.me/818072870349" className="font-bold text-[#1B5DAF] hover:underline">+81 80-7287-0349</a><br />
-                Instagram: <a href="https://instagram.com/jepangupdates" className="font-bold text-[#1B5DAF] hover:underline">@jepangupdates</a>
+                Instagram: <a href="https://instagram.com/japanpopuler" className="font-bold text-[#1B5DAF] hover:underline">@japanpopuler</a>
               </p>
             </div>
           </section>

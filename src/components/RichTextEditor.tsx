@@ -32,7 +32,7 @@ type RichTextEditorProps = {
   onChange: (html: string) => void;
 };
 
-const DEFAULT_CONTENT = '<p><a href="https://jepangupdates.com" target="_blank" rel="noopener noreferrer">JEPANGUPDATES.COM</a> - </p>';
+const DEFAULT_CONTENT = '<p></p>';
 
 export function RichTextEditor({ content, onChange }: RichTextEditorProps) {
   const [showLinkModal, setShowLinkModal] = useState(false);

@@ -2,8 +2,8 @@ import { Footer } from "@/components/Footer";
 import { StickySiteHeader } from "@/components/StickySiteHeader";
 
 export const metadata = {
-  title: "Media Partner - Jepang Updates",
-  description: "Kerjasama media partner dengan Jepang Updates untuk event dan kegiatan komunitas Indonesia di Jepang.",
+  title: "Media Partner - Japan Populer",
+  description: "Kerjasama media partner dengan Japan Populer untuk event dan kegiatan komunitas Indonesia di Jepang.",
 };
 
 export default function MediaPartnerPage() {
@@ -18,7 +18,7 @@ export default function MediaPartnerPage() {
           <section>
             <h2 className="text-xl font-black text-[#111827]">Tentang Media Partner</h2>
             <p className="mt-3">
-              Jepang Updates membuka kerjasama media partner untuk event,
+              Japan Populer membuka kerjasama media partner untuk event,
  kegiatan komunitas, festival, turnamen olahraga, dan acara budaya Indonesia di Jepang. Sebagai portal berita terkemuka untuk diaspora Indonesia, kami siap membantu mempublikasikan dan meliput acara Anda secara profesional.
             </p>
           </section>
@@ -40,7 +40,7 @@ export default function MediaPartnerPage() {
               </div>
               <div className="rounded-lg border border-slate-200 p-5">
                 <p className="font-black text-[#1B5DAF]">📱 Promosi Media Sosial</p>
-                <p className="mt-1 text-sm text-slate-600">Publikasi di seluruh platform media sosial Jepang Updates (Instagram, Facebook, TikTok, YouTube) untuk jangkauan maksimal.</p>
+                <p className="mt-1 text-sm text-slate-600">Publikasi di seluruh platform media sosial Japan Populer (Instagram, Facebook, TikTok, YouTube) untuk jangkauan maksimal.</p>
               </div>
               <div className="rounded-lg border border-slate-200 p-5">
                 <p className="font-black text-[#1B5DAF]">🎥 Konten Video</p>
@@ -124,7 +124,7 @@ export default function MediaPartnerPage() {
               <li>Event bersifat positif dan tidak melanggar hukum Jepang maupun Indonesia.</li>
               <li>Pengajuan minimal 2 minggu sebelum hari-H event.</li>
               <li>Menyediakan informasi lengkap: nama event, tanggal, lokasi, line-up, dan kontak PIC.</li>
-              <li>Bersedia mencantumkan logo Jepang Updates sebagai media partner.</li>
+              <li>Bersedia mencantumkan logo Japan Populer sebagai media partner.</li>
               <li>Menyediakan akses press/media untuk tim liputan kami.</li>
             </ul>
           </section>
@@ -137,9 +137,9 @@ export default function MediaPartnerPage() {
             <div className="mt-4 rounded-lg bg-slate-50 p-5">
               <p className="font-black">Tim Media Partner</p>
               <p className="mt-2 text-sm text-slate-600">
-                Email: <a href="mailto:mediapartner@jepangupdates.com" className="font-bold text-[#1B5DAF] hover:underline">mediapartner@jepangupdates.com</a><br />
+                Email: <a href="mailto:mediapartner@japanpopuler.com" className="font-bold text-[#1B5DAF] hover:underline">mediapartner@japanpopuler.com</a><br />
                 WhatsApp: <a href="https://wa.me/818072870349" className="font-bold text-[#1B5DAF] hover:underline">+81 80-7287-0349</a><br />
-                Instagram DM: <a href="https://instagram.com/jepangupdates" className="font-bold text-[#1B5DAF] hover:underline">@jepangupdates</a>
+                Instagram DM: <a href="https://instagram.com/japanpopuler" className="font-bold text-[#1B5DAF] hover:underline">@japanpopuler</a>
               </p>
             </div>
           </section>

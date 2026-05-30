@@ -2,8 +2,8 @@ import { Footer } from "@/components/Footer";
 import { StickySiteHeader } from "@/components/StickySiteHeader";
 
 export const metadata = {
-  title: "Syarat dan Ketentuan - Jepang Updates",
-  description: "Syarat dan ketentuan penggunaan portal berita Jepang Updates.",
+  title: "Syarat dan Ketentuan - Japan Populer",
+  description: "Syarat dan ketentuan penggunaan portal berita Japan Populer.",
 };
 
 export default function SyaratKetentuan() {
@@ -18,14 +18,14 @@ export default function SyaratKetentuan() {
           <section>
             <h2 className="text-xl font-black text-[#111827]">1. Ketentuan Umum</h2>
             <p className="mt-3">
-              Dengan mengakses dan menggunakan situs Jepang Updates (jepangupdates.com), Anda menyetujui untuk terikat dengan syarat dan ketentuan ini. Jika Anda tidak menyetujui ketentuan ini, mohon untuk tidak menggunakan layanan kami.
+              Dengan mengakses dan menggunakan situs Japan Populer (japanpopuler.com), Anda menyetujui untuk terikat dengan syarat dan ketentuan ini. Jika Anda tidak menyetujui ketentuan ini, mohon untuk tidak menggunakan layanan kami.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-black text-[#111827]">2. Hak Kekayaan Intelektual</h2>
             <p className="mt-3">
-              Seluruh konten yang dipublikasikan di Jepang Updates, termasuk namun tidak terbatas pada artikel, foto, grafis, logo, dan desain, merupakan hak cipta milik Jepang Updates atau pemberi lisensi kami. Dilarang menyalin, mendistribusikan, atau mereproduksi konten tanpa izin tertulis.
+              Seluruh konten yang dipublikasikan di Japan Populer, termasuk namun tidak terbatas pada artikel, foto, grafis, logo, dan desain, merupakan hak cipta milik Japan Populer atau pemberi lisensi kami. Dilarang menyalin, mendistribusikan, atau mereproduksi konten tanpa izin tertulis.
             </p>
           </section>
 
@@ -54,7 +54,7 @@ export default function SyaratKetentuan() {
           <section>
             <h2 className="text-xl font-black text-[#111827]">5. Batasan Tanggung Jawab</h2>
             <p className="mt-3">
-              Jepang Updates menyediakan informasi untuk tujuan edukasi dan informasi umum. Kami berusaha menjaga akurasi konten, namun tidak menjamin bahwa semua informasi selalu terkini atau bebas dari kesalahan. Keputusan yang diambil berdasarkan informasi di situs ini sepenuhnya menjadi tanggung jawab pengguna.
+              Japan Populer menyediakan informasi untuk tujuan edukasi dan informasi umum. Kami berusaha menjaga akurasi konten, namun tidak menjamin bahwa semua informasi selalu terkini atau bebas dari kesalahan. Keputusan yang diambil berdasarkan informasi di situs ini sepenuhnya menjadi tanggung jawab pengguna.
             </p>
           </section>
 
@@ -75,14 +75,14 @@ export default function SyaratKetentuan() {
           <section>
             <h2 className="text-xl font-black text-[#111827]">8. Hukum yang Berlaku</h2>
             <p className="mt-3">
-              Syarat dan ketentuan ini diatur oleh dan ditafsirkan sesuai dengan hukum yang berlaku di Jepang dan Indonesia, sesuai dengan konteks operasional media Jepang Updates.
+              Syarat dan ketentuan ini diatur oleh dan ditafsirkan sesuai dengan hukum yang berlaku di Jepang dan Indonesia, sesuai dengan konteks operasional media Japan Populer.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-black text-[#111827]">9. Kontak</h2>
             <p className="mt-3">
-              Untuk pertanyaan terkait syarat dan ketentuan, hubungi kami di <a href="mailto:redaksi@jepangupdates.com" className="font-bold text-[#1B5DAF] hover:underline">redaksi@jepangupdates.com</a>.
+              Untuk pertanyaan terkait syarat dan ketentuan, hubungi kami di <a href="mailto:redaksi@japanpopuler.com" className="font-bold text-[#1B5DAF] hover:underline">redaksi@japanpopuler.com</a>.
             </p>
           </section>
         </div>

@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 
 export const dynamic = "force-dynamic";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://jepangupdates.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://japanpopuler.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Get all published articles

@@ -1,45 +1,52 @@
 "use client";
 
-const shareUrl = "https://jepangupdates.com/artikel/visa-pekerja-terampil-jepang-2026";
-const shareTitle = "Cirebon Pride Japan Resmi Kantongi Legalitas, Siap Sambut Anniversary ke-2 dengan Semangat Baru";
-
-const shareItems = [
-  {
-    label: "Facebook",
-    href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
-    className: "bg-[#1877F2] hover:bg-[#1466d8]",
-    icon: <FacebookIcon />,
-  },
-  {
-    label: "X",
-    href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}`,
-    className: "bg-[#111827] hover:bg-black",
-    icon: <XIcon />,
-  },
-  {
-    label: "WhatsApp",
-    href: `https://wa.me/?text=${encodeURIComponent(`${shareTitle} ${shareUrl}`)}`,
-    className: "bg-[#25D366] hover:bg-[#1fba57]",
-    icon: <WhatsAppIcon />,
-  },
-  {
-    label: "Telegram",
-    href: `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}`,
-    className: "bg-[#2AABEE] hover:bg-[#229ad6]",
-    icon: <TelegramIcon />,
-  },
-  {
-    label: "LINE",
-    href: `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(shareUrl)}`,
-    className: "bg-[#06C755] hover:bg-[#05a847]",
-    icon: <LineIcon />,
-  },
-];
+import { useEffect, useState } from "react";
 
 export function ArticleShareButtons() {
+  const [currentUrl, setCurrentUrl] = useState("");
+  const [currentTitle, setCurrentTitle] = useState("");
+
+  useEffect(() => {
+    setCurrentUrl(window.location.href);
+    setCurrentTitle(document.title);
+  }, []);
+
   const copyLink = async () => {
-    await navigator.clipboard.writeText(window.location.href);
+    await navigator.clipboard.writeText(currentUrl);
   };
+
+  const shareItems = [
+    {
+      label: "Facebook",
+      href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`,
+      className: "bg-[#1877F2] hover:bg-[#1466d8]",
+      icon: <FacebookIcon />,
+    },
+    {
+      label: "X",
+      href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(currentTitle)}`,
+      className: "bg-[#111827] hover:bg-black",
+      icon: <XIcon />,
+    },
+    {
+      label: "WhatsApp",
+      href: `https://wa.me/?text=${encodeURIComponent(`${currentTitle} ${currentUrl}`)}`,
+      className: "bg-[#25D366] hover:bg-[#1fba57]",
+      icon: <WhatsAppIcon />,
+    },
+    {
+      label: "Telegram",
+      href: `https://t.me/share/url?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(currentTitle)}`,
+      className: "bg-[#2AABEE] hover:bg-[#229ad6]",
+      icon: <TelegramIcon />,
+    },
+    {
+      label: "LINE",
+      href: `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(currentUrl)}`,
+      className: "bg-[#06C755] hover:bg-[#05a847]",
+      icon: <LineIcon />,
+    },
+  ];
 
   return (
     <div className="flex flex-wrap items-center gap-3">

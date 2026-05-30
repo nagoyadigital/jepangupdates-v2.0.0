@@ -11,7 +11,7 @@ async function main() {
 
   await db.execute({
     sql: `INSERT OR IGNORE INTO users (id, name, email, password, role, isActive, bio, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, ?, ?, datetime('now'), datetime('now'))`,
-    args: [adminId, "Super Admin", "admin@jepangupdates.com", hashedPassword, "SUPER_ADMIN", 1, "Administrator utama Jepang Updates"],
+    args: [adminId, "Super Admin", "admin@japanpopuler.com", hashedPassword, "SUPER_ADMIN", 1, "Administrator utama Japan Populer"],
   });
   console.log("✅ Super Admin created");
 
@@ -79,7 +79,7 @@ async function main() {
   console.log("✅ Navigation menu created");
 
   console.log("\n🎉 Seeding completed!");
-  console.log("📧 Login: admin@jepangupdates.com");
+  console.log("📧 Login: admin@japanpopuler.com");
   console.log("🔑 Password: SuperAdmin123!");
 }
 

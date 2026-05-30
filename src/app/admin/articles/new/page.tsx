@@ -287,7 +287,7 @@ export default function NewArticlePage() {
                   <div className="rounded-md border border-slate-200 bg-white p-4">
                     <p className="mb-2 text-xs font-bold uppercase tracking-wider text-slate-400">Preview di Google</p>
                     <div className="space-y-1">
-                      <p className="text-sm text-emerald-700 truncate">jepangupdates.com › {form.title ? form.title.toLowerCase().replace(/\s+/g, "-").substring(0, 40) : "nama-artikel"}</p>
+                      <p className="text-sm text-emerald-700 truncate">japanpopuler.com › {form.title ? form.title.toLowerCase().replace(/\s+/g, "-").substring(0, 40) : "nama-artikel"}</p>
                       <p className="text-xl text-[#1a0dab] hover:underline truncate">{form.metaTitle || form.title || "Judul Artikel"}</p>
                       <p className="text-sm text-slate-600 line-clamp-2">{form.metaDescription || form.excerpt || "Deskripsi artikel akan muncul di sini. Tulis ringkasan yang menarik agar orang mau klik dari hasil pencarian Google."}</p>
                     </div>
@@ -303,7 +303,7 @@ export default function NewArticlePage() {
                         <div className="flex h-40 items-center justify-center bg-slate-100 text-sm text-slate-400">Gambar utama akan muncul di sini</div>
                       )}
                       <div className="bg-[#f2f3f5] p-3">
-                        <p className="text-[11px] uppercase text-slate-500">jepangupdates.com</p>
+                        <p className="text-[11px] uppercase text-slate-500">japanpopuler.com</p>
                         <p className="mt-1 text-sm font-bold text-[#1d2129] line-clamp-2">{form.metaTitle || form.title || "Judul Artikel"}</p>
                         <p className="mt-0.5 text-xs text-slate-500 line-clamp-1">{form.metaDescription || form.excerpt || "Deskripsi artikel..."}</p>
                       </div>

@@ -15,15 +15,15 @@ async function main() {
   const hashedPassword = "$2a$12$LQv3c1yqBo9SkvXS7QTJPOoGz3KLBfIq5Y.HCkz8/roB.1fZJXICy"; // SuperAdmin123!
 
   const superAdmin = await prisma.user.upsert({
-    where: { email: "admin@jepangupdates.com" },
+    where: { email: "admin@japanpopuler.com" },
     update: {},
     create: {
       name: "Super Admin",
-      email: "admin@jepangupdates.com",
+      email: "admin@japanpopuler.com",
       password: hashedPassword,
       role: "SUPER_ADMIN",
       isActive: true,
-      bio: "Administrator utama Jepang Updates",
+      bio: "Administrator utama Japan Populer",
     },
   });
   console.log(`✅ Super Admin: ${superAdmin.email}`);
@@ -196,7 +196,7 @@ async function main() {
   console.log(`✅ Navigation menu created`);
 
   console.log("\n🎉 Seeding completed!");
-  console.log("📧 Login: admin@jepangupdates.com");
+  console.log("📧 Login: admin@japanpopuler.com");
   console.log("🔑 Password: SuperAdmin123!");
 }
 

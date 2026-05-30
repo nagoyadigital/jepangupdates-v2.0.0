@@ -2,8 +2,8 @@ import { Footer } from "@/components/Footer";
 import { StickySiteHeader } from "@/components/StickySiteHeader";
 
 export const metadata = {
-  title: "Tentang Kami - Jepang Updates",
-  description: "Mengenal lebih dekat portal berita Jepang Updates untuk komunitas Indonesia di Jepang.",
+  title: "Tentang Kami - Japan Populer",
+  description: "Mengenal lebih dekat portal berita Japan Populer untuk komunitas Indonesia di Jepang.",
 };
 
 export default function AboutPage() {
@@ -18,7 +18,7 @@ export default function AboutPage() {
           <section>
             <h2 className="text-xl font-black text-[#111827]">Siapa Kami?</h2>
             <p className="mt-3">
-              <strong className="font-black text-[#1B5DAF]">Jepang Updates</strong> (jepangupdates.com) adalah portal berita dan informasi berbahasa Indonesia yang didedikasikan untuk komunitas Indonesia di Jepang. Kami hadir sebagai jembatan informasi bagi pekerja, pelajar, pelaku bisnis, dan seluruh diaspora Indonesia yang tinggal atau memiliki ketertarikan dengan Negeri Sakura.
+              <strong className="font-black text-[#1B5DAF]">Japan Populer</strong> (japanpopuler.com) adalah portal berita dan informasi berbahasa Indonesia yang didedikasikan untuk komunitas Indonesia di Jepang. Kami hadir sebagai jembatan informasi bagi pekerja, pelajar, pelaku bisnis, dan seluruh diaspora Indonesia yang tinggal atau memiliki ketertarikan dengan Negeri Sakura.
             </p>
           </section>
 
@@ -73,23 +73,23 @@ export default function AboutPage() {
           <section>
             <h2 className="text-xl font-black text-[#111827]">Jangkauan Kami</h2>
             <p className="mt-3">
-              Jepang Updates melayani pembaca di seluruh wilayah Jepang, dengan fokus utama di kota-kota besar seperti Tokyo, Osaka, Nagoya, Fukuoka, dan Sapporo. Kami juga menjangkau pembaca di Indonesia yang berencana bekerja, belajar, atau berkunjung ke Jepang.
+              Japan Populer melayani pembaca di seluruh wilayah Jepang, dengan fokus utama di kota-kota besar seperti Tokyo, Osaka, Nagoya, Fukuoka, dan Sapporo. Kami juga menjangkau pembaca di Indonesia yang berencana bekerja, belajar, atau berkunjung ke Jepang.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-black text-[#111827]">Dikembangkan Oleh</h2>
             <p className="mt-3">
-              Jepang Updates dikembangkan oleh <a href="https://nagoyadigital.com" className="font-bold text-[#1B5DAF] hover:underline">Nagoya Digital</a>, perusahaan teknologi dan media digital yang berbasis di Jepang, yang berfokus pada pengembangan platform digital untuk komunitas Indonesia di luar negeri.
+              Japan Populer dikembangkan oleh <a href="https://nagoyadigital.com" className="font-bold text-[#1B5DAF] hover:underline">Nagoya Digital</a>, perusahaan teknologi dan media digital yang berbasis di Jepang, yang berfokus pada pengembangan platform digital untuk komunitas Indonesia di luar negeri.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-black text-[#111827]">Hubungi Kami</h2>
             <p className="mt-3">
-              Email: <a href="mailto:redaksi@jepangupdates.com" className="font-bold text-[#1B5DAF] hover:underline">redaksi@jepangupdates.com</a><br />
-              Instagram: <a href="https://instagram.com/jepangupdates" className="font-bold text-[#1B5DAF] hover:underline">@jepangupdates</a><br />
-              Facebook: <a href="https://facebook.com/jepangupdates" className="font-bold text-[#1B5DAF] hover:underline">Jepang Updates</a>
+              Email: <a href="mailto:redaksi@japanpopuler.com" className="font-bold text-[#1B5DAF] hover:underline">redaksi@japanpopuler.com</a><br />
+              Instagram: <a href="https://instagram.com/japanpopuler" className="font-bold text-[#1B5DAF] hover:underline">@japanpopuler</a><br />
+              Facebook: <a href="https://facebook.com/japanpopuler" className="font-bold text-[#1B5DAF] hover:underline">Japan Populer</a>
             </p>
           </section>
         </div>

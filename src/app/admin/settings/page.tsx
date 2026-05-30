@@ -20,29 +20,29 @@ export default function SettingsPage() {
       // Merge with defaults if empty
       const defaults: Record<string, SettingsGroup> = {
         general: {
-          site_name: "Jepang Updates",
+          site_name: "Japan Populer",
           site_tagline: "Portal Berita Komunitas Indonesia di Jepang",
           site_description: "Portal berita Jepang modern untuk komunitas Indonesia. Informasi terkini seputar pekerjaan, imigrasi, event, dan kehidupan di Jepang.",
-          site_url: "https://jepangupdates.com",
-          site_logo: "/jepangupdates-logo-trimmed.png",
-          site_favicon: "/jepangupdates-logo-trimmed.png",
+          site_url: "https://japanpopuler.com",
+          site_logo: "/japanpopuler-logo-trimmed.png",
+          site_favicon: "/japanpopuler-logo-trimmed.png",
           footer_logo: "",
           admin_logo: "",
           site_language: "id",
         },
         social: {
-          facebook: "https://facebook.com/jepangupdates",
-          instagram: "https://instagram.com/jepangupdates",
+          facebook: "https://facebook.com/japanpopuler",
+          instagram: "https://instagram.com/japanpopuler",
           twitter: "",
-          youtube: "https://youtube.com/@jepangupdates",
-          tiktok: "https://tiktok.com/@jepangupdates",
+          youtube: "https://youtube.com/@japanpopuler",
+          tiktok: "https://tiktok.com/@japanpopuler",
           telegram: "",
           whatsapp: "",
           line: "",
         },
         contact: {
-          contact_email: "redaksi@jepangupdates.com",
-          ads_email: "iklan@jepangupdates.com",
+          contact_email: "redaksi@japanpopuler.com",
+          ads_email: "iklan@japanpopuler.com",
           contact_phone: "",
           contact_address: "",
           smtp_host: "",
@@ -71,7 +71,7 @@ export default function SettingsPage() {
         },
         footer: {
           footer_description: "Portal berita Jepang berbahasa Indonesia untuk pekerja, pelajar, pelaku bisnis, dan komunitas Indonesia di Jepang.",
-          footer_copyright: "© 2026 Jepang Updates. All rights reserved.",
+          footer_copyright: "© 2026 Japan Populer. All rights reserved.",
           footer_developer_text: "Developed by",
           footer_developer_name: "Nagoya Digital",
           footer_developer_url: "https://nagoyadigital.com",
@@ -200,7 +200,7 @@ export default function SettingsPage() {
                   <div className="mt-5 grid gap-5 sm:grid-cols-2">
                     <div>
                       <label className="mb-1 block text-sm font-bold text-slate-700">Nama Situs</label>
-                      <input type="text" value={general.site_name || ""} onChange={(e) => updateSetting("general", "site_name", e.target.value)} placeholder="Jepang Updates" className="w-full rounded-md border px-4 py-2.5 text-sm" />
+                      <input type="text" value={general.site_name || ""} onChange={(e) => updateSetting("general", "site_name", e.target.value)} placeholder="Japan Populer" className="w-full rounded-md border px-4 py-2.5 text-sm" />
                     </div>
                     <div>
                       <label className="mb-1 block text-sm font-bold text-slate-700">Tagline</label>
@@ -212,7 +212,7 @@ export default function SettingsPage() {
                     </div>
                     <div>
                       <label className="mb-1 block text-sm font-bold text-slate-700">URL Situs</label>
-                      <input type="url" value={general.site_url || ""} onChange={(e) => updateSetting("general", "site_url", e.target.value)} placeholder="https://jepangupdates.com" className="w-full rounded-md border px-4 py-2.5 text-sm" />
+                      <input type="url" value={general.site_url || ""} onChange={(e) => updateSetting("general", "site_url", e.target.value)} placeholder="https://japanpopuler.com" className="w-full rounded-md border px-4 py-2.5 text-sm" />
                     </div>
                     <div>
                       <label className="mb-1 block text-sm font-bold text-slate-700">Bahasa</label>
@@ -343,27 +343,27 @@ export default function SettingsPage() {
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div>
                     <label className="mb-1 block text-sm font-bold text-slate-700">Facebook</label>
-                    <input type="url" value={social.facebook || ""} onChange={(e) => updateSetting("social", "facebook", e.target.value)} placeholder="https://facebook.com/jepangupdates" className="w-full rounded-md border px-4 py-2.5 text-sm" />
+                    <input type="url" value={social.facebook || ""} onChange={(e) => updateSetting("social", "facebook", e.target.value)} placeholder="https://facebook.com/japanpopuler" className="w-full rounded-md border px-4 py-2.5 text-sm" />
                   </div>
                   <div>
                     <label className="mb-1 block text-sm font-bold text-slate-700">Instagram</label>
-                    <input type="url" value={social.instagram || ""} onChange={(e) => updateSetting("social", "instagram", e.target.value)} placeholder="https://instagram.com/jepangupdates" className="w-full rounded-md border px-4 py-2.5 text-sm" />
+                    <input type="url" value={social.instagram || ""} onChange={(e) => updateSetting("social", "instagram", e.target.value)} placeholder="https://instagram.com/japanpopuler" className="w-full rounded-md border px-4 py-2.5 text-sm" />
                   </div>
                   <div>
                     <label className="mb-1 block text-sm font-bold text-slate-700">Twitter / X</label>
-                    <input type="url" value={social.twitter || ""} onChange={(e) => updateSetting("social", "twitter", e.target.value)} placeholder="https://x.com/jepangupdates" className="w-full rounded-md border px-4 py-2.5 text-sm" />
+                    <input type="url" value={social.twitter || ""} onChange={(e) => updateSetting("social", "twitter", e.target.value)} placeholder="https://x.com/japanpopuler" className="w-full rounded-md border px-4 py-2.5 text-sm" />
                   </div>
                   <div>
                     <label className="mb-1 block text-sm font-bold text-slate-700">YouTube</label>
-                    <input type="url" value={social.youtube || ""} onChange={(e) => updateSetting("social", "youtube", e.target.value)} placeholder="https://youtube.com/@jepangupdates" className="w-full rounded-md border px-4 py-2.5 text-sm" />
+                    <input type="url" value={social.youtube || ""} onChange={(e) => updateSetting("social", "youtube", e.target.value)} placeholder="https://youtube.com/@japanpopuler" className="w-full rounded-md border px-4 py-2.5 text-sm" />
                   </div>
                   <div>
                     <label className="mb-1 block text-sm font-bold text-slate-700">TikTok</label>
-                    <input type="url" value={social.tiktok || ""} onChange={(e) => updateSetting("social", "tiktok", e.target.value)} placeholder="https://tiktok.com/@jepangupdates" className="w-full rounded-md border px-4 py-2.5 text-sm" />
+                    <input type="url" value={social.tiktok || ""} onChange={(e) => updateSetting("social", "tiktok", e.target.value)} placeholder="https://tiktok.com/@japanpopuler" className="w-full rounded-md border px-4 py-2.5 text-sm" />
                   </div>
                   <div>
                     <label className="mb-1 block text-sm font-bold text-slate-700">Telegram</label>
-                    <input type="url" value={social.telegram || ""} onChange={(e) => updateSetting("social", "telegram", e.target.value)} placeholder="https://t.me/jepangupdates" className="w-full rounded-md border px-4 py-2.5 text-sm" />
+                    <input type="url" value={social.telegram || ""} onChange={(e) => updateSetting("social", "telegram", e.target.value)} placeholder="https://t.me/japanpopuler" className="w-full rounded-md border px-4 py-2.5 text-sm" />
                   </div>
                   <div>
                     <label className="mb-1 block text-sm font-bold text-slate-700">WhatsApp</label>
@@ -384,11 +384,11 @@ export default function SettingsPage() {
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div>
                     <label className="mb-1 block text-sm font-bold text-slate-700">Email Redaksi</label>
-                    <input type="email" value={contact.contact_email || ""} onChange={(e) => updateSetting("contact", "contact_email", e.target.value)} placeholder="redaksi@jepangupdates.com" className="w-full rounded-md border px-4 py-2.5 text-sm" />
+                    <input type="email" value={contact.contact_email || ""} onChange={(e) => updateSetting("contact", "contact_email", e.target.value)} placeholder="redaksi@japanpopuler.com" className="w-full rounded-md border px-4 py-2.5 text-sm" />
                   </div>
                   <div>
                     <label className="mb-1 block text-sm font-bold text-slate-700">Email Iklan / Bisnis</label>
-                    <input type="email" value={contact.ads_email || ""} onChange={(e) => updateSetting("contact", "ads_email", e.target.value)} placeholder="iklan@jepangupdates.com" className="w-full rounded-md border px-4 py-2.5 text-sm" />
+                    <input type="email" value={contact.ads_email || ""} onChange={(e) => updateSetting("contact", "ads_email", e.target.value)} placeholder="iklan@japanpopuler.com" className="w-full rounded-md border px-4 py-2.5 text-sm" />
                   </div>
                   <div>
                     <label className="mb-1 block text-sm font-bold text-slate-700">Telepon / WhatsApp</label>
@@ -516,7 +516,7 @@ export default function SettingsPage() {
                   </div>
                   <div>
                     <label className="mb-1 block text-sm font-bold text-slate-700">Teks Copyright</label>
-                    <input value={footer.footer_copyright || ""} onChange={(e) => updateSetting("footer", "footer_copyright", e.target.value)} className="w-full rounded-md border px-4 py-2.5 text-sm" placeholder="© 2026 Jepang Updates. All rights reserved." />
+                    <input value={footer.footer_copyright || ""} onChange={(e) => updateSetting("footer", "footer_copyright", e.target.value)} className="w-full rounded-md border px-4 py-2.5 text-sm" placeholder="© 2026 Japan Populer. All rights reserved." />
                   </div>
                   <div className="grid gap-5 sm:grid-cols-3">
                     <div>

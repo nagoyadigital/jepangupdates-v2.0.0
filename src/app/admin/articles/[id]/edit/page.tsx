@@ -275,7 +275,7 @@ export default function EditArticlePage() {
                 <div className="border-t border-slate-200 p-5 space-y-4">
                   <div className="rounded-md border border-slate-200 bg-white p-4">
                     <p className="mb-2 text-xs font-bold uppercase tracking-wider text-slate-400">Preview di Google</p>
-                    <p className="text-sm text-emerald-700 truncate">jepangupdates.com › {form.title.toLowerCase().replace(/\s+/g, "-").substring(0, 40)}</p>
+                    <p className="text-sm text-emerald-700 truncate">japanpopuler.com › {form.title.toLowerCase().replace(/\s+/g, "-").substring(0, 40)}</p>
                     <p className="text-xl text-[#1a0dab] truncate">{form.metaTitle || form.title || "Judul"}</p>
                     <p className="text-sm text-slate-600 line-clamp-2">{form.metaDescription || form.excerpt || "Deskripsi..."}</p>
                   </div>

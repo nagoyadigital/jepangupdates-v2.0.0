@@ -2,8 +2,8 @@ import { Footer } from "@/components/Footer";
 import { StickySiteHeader } from "@/components/StickySiteHeader";
 
 export const metadata = {
-  title: "Kontak - Jepang Updates",
-  description: "Hubungi tim Jepang Updates untuk pertanyaan, kerjasama, atau saran.",
+  title: "Kontak - Japan Populer",
+  description: "Hubungi tim Japan Populer untuk pertanyaan, kerjasama, atau saran.",
 };
 
 export default function ContactPage() {
@@ -18,22 +18,22 @@ export default function ContactPage() {
           <section>
             <h2 className="text-xl font-black text-[#111827]">Informasi Kontak</h2>
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              <a href="mailto:redaksi@jepangupdates.com" className="flex items-center gap-4 rounded-lg bg-slate-50 p-5 transition hover:bg-blue-50">
+              <a href="mailto:redaksi@japanpopuler.com" className="flex items-center gap-4 rounded-lg bg-slate-50 p-5 transition hover:bg-blue-50">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#1B5DAF]/10">
                   <IconEmail />
                 </div>
                 <div>
                   <p className="font-black text-[#1B5DAF]">Email Redaksi</p>
-                  <p className="mt-0.5 text-sm text-slate-600">redaksi@jepangupdates.com</p>
+                  <p className="mt-0.5 text-sm text-slate-600">redaksi@japanpopuler.com</p>
                 </div>
               </a>
-              <a href="mailto:iklan@jepangupdates.com" className="flex items-center gap-4 rounded-lg bg-slate-50 p-5 transition hover:bg-blue-50">
+              <a href="mailto:iklan@japanpopuler.com" className="flex items-center gap-4 rounded-lg bg-slate-50 p-5 transition hover:bg-blue-50">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#1B5DAF]/10">
                   <IconBriefcase />
                 </div>
                 <div>
                   <p className="font-black text-[#1B5DAF]">Email Iklan & Bisnis</p>
-                  <p className="mt-0.5 text-sm text-slate-600">iklan@jepangupdates.com</p>
+                  <p className="mt-0.5 text-sm text-slate-600">iklan@japanpopuler.com</p>
                 </div>
               </a>
               <a href="https://wa.me/818072870349" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-lg bg-slate-50 p-5 transition hover:bg-green-50">
@@ -60,40 +60,40 @@ export default function ContactPage() {
           <section>
             <h2 className="text-xl font-black text-[#111827]">Media Sosial</h2>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              <a href="https://instagram.com/jepangupdates" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-lg border border-slate-200 p-4 transition hover:border-[#E4405F] hover:bg-pink-50">
+              <a href="https://instagram.com/japanpopuler" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-lg border border-slate-200 p-4 transition hover:border-[#E4405F] hover:bg-pink-50">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF]">
                   <IconInstagram />
                 </div>
                 <div>
                   <p className="font-black text-[#111827]">Instagram</p>
-                  <p className="text-sm text-slate-500">@jepangupdates</p>
+                  <p className="text-sm text-slate-500">@japanpopuler</p>
                 </div>
               </a>
-              <a href="https://facebook.com/jepangupdates" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-lg border border-slate-200 p-4 transition hover:border-[#1877F2] hover:bg-blue-50">
+              <a href="https://facebook.com/japanpopuler" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-lg border border-slate-200 p-4 transition hover:border-[#1877F2] hover:bg-blue-50">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#1877F2]">
                   <IconFacebook />
                 </div>
                 <div>
                   <p className="font-black text-[#111827]">Facebook</p>
-                  <p className="text-sm text-slate-500">Jepang Updates</p>
+                  <p className="text-sm text-slate-500">Japan Populer</p>
                 </div>
               </a>
-              <a href="https://youtube.com/@jepangupdates" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-lg border border-slate-200 p-4 transition hover:border-[#FF0000] hover:bg-red-50">
+              <a href="https://youtube.com/@japanpopuler" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-lg border border-slate-200 p-4 transition hover:border-[#FF0000] hover:bg-red-50">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#FF0000]">
                   <IconYouTube />
                 </div>
                 <div>
                   <p className="font-black text-[#111827]">YouTube</p>
-                  <p className="text-sm text-slate-500">@jepangupdates</p>
+                  <p className="text-sm text-slate-500">@japanpopuler</p>
                 </div>
               </a>
-              <a href="https://tiktok.com/@jepangupdates" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-lg border border-slate-200 p-4 transition hover:border-[#111827] hover:bg-slate-50">
+              <a href="https://tiktok.com/@japanpopuler" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-lg border border-slate-200 p-4 transition hover:border-[#111827] hover:bg-slate-50">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#111827]">
                   <IconTikTok />
                 </div>
                 <div>
                   <p className="font-black text-[#111827]">TikTok</p>
-                  <p className="text-sm text-slate-500">@jepangupdates</p>
+                  <p className="text-sm text-slate-500">@japanpopuler</p>
                 </div>
               </a>
             </div>
@@ -118,9 +118,9 @@ export default function ContactPage() {
           <section>
             <h2 className="text-xl font-black text-[#111827]">Untuk Keperluan</h2>
             <ul className="mt-3 list-disc space-y-2 pl-6">
-              <li><strong>Kerjasama Iklan & Sponsorship</strong> — hubungi iklan@jepangupdates.com</li>
-              <li><strong>Kontribusi Artikel & Jurnalis</strong> — kirim portofolio ke redaksi@jepangupdates.com</li>
-              <li><strong>Hak Jawab & Klarifikasi</strong> — email ke redaksi@jepangupdates.com</li>
+              <li><strong>Kerjasama Iklan & Sponsorship</strong> — hubungi iklan@japanpopuler.com</li>
+              <li><strong>Kontribusi Artikel & Jurnalis</strong> — kirim portofolio ke redaksi@japanpopuler.com</li>
+              <li><strong>Hak Jawab & Klarifikasi</strong> — email ke redaksi@japanpopuler.com</li>
               <li><strong>Liputan Event Komunitas</strong> — hubungi via WhatsApp atau email redaksi</li>
               <li><strong>Pertanyaan Umum</strong> — gunakan formulir di atas</li>
             </ul>
