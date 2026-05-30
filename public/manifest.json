@@ -1,7 +1,7 @@
 {
-  "name": "Jepang Updates",
-  "short_name": "JepangUpdates",
-  "description": "Portal Berita Komunitas Indonesia di Jepang",
+  "name": "Japan Populer",
+  "short_name": "JapanPopuler",
+  "description": "Portal Berita Jepang Terpopuler",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -11,13 +11,13 @@
   "lang": "id",
   "icons": [
     {
-      "src": "/jepangupdates-logo-trimmed.png",
+      "src": "/fav-icon.PNG",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/jepangupdates-logo.png",
+      "src": "/fav-icon.PNG",
       "sizes": "512x512",
       "type": "image/png"
     }

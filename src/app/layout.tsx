@@ -81,14 +81,21 @@ export default function RootLayout({
       <head>
         {/* Preconnect for performance */}
         <link rel="preconnect" href="https://api.open-meteo.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
         {/* PWA */}
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#1B5DAF" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         {/* Hreflang */}
         <link rel="alternate" hrefLang="id" href={process.env.NEXT_PUBLIC_SITE_URL || "https://japanpopuler.com"} />
         <link rel="alternate" hrefLang="x-default" href={process.env.NEXT_PUBLIC_SITE_URL || "https://japanpopuler.com"} />
+        {/* RSS Feed */}
+        <link rel="alternate" type="application/rss+xml" title="Japan Populer RSS Feed" href="/feed.xml" />
         <SeoHead />
       </head>
       <body className="min-h-full flex flex-col">
