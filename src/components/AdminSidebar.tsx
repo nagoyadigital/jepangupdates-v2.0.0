@@ -64,18 +64,24 @@ export function AdminSidebar() {
   const pathname = usePathname();
   const { data: session } = useSession();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [primaryColor, setPrimaryColor] = useState("#1B5DAF");
-  const [siteLogo, setSiteLogo] = useState("/jepangupdates-logo-trimmed.png");
+  const [primaryColor, setPrimaryColor] = useState("");
+  const [siteLogo, setSiteLogo] = useState("");
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     fetch("/api/settings/public")
       .then((r) => (r.ok ? r.json() : {}))
       .then((data) => {
         if (data?.appearance?.primary_color) setPrimaryColor(data.appearance.primary_color);
+        else setPrimaryColor("#1B5DAF");
         const general = data?.general || {};
-        setSiteLogo(general.admin_logo || general.site_logo || "/jepangupdates-logo-trimmed.png");
+        setSiteLogo(general.admin_logo || general.site_logo || "");
+        setReady(true);
       })
-      .catch(() => {});
+      .catch(() => {
+        setPrimaryColor("#1B5DAF");
+        setReady(true);
+      });
   }, []);
 
   const roleLabel: Record<string, string> = {
@@ -106,11 +112,18 @@ export function AdminSidebar() {
   return (
     <>
       {/* Mobile toggle */}
-      <div className="sticky top-0 z-40 flex items-center justify-between border-b border-slate-200 px-4 py-3 lg:hidden" style={{ backgroundColor: primaryColor }}>
-        <Link href="/admin" className="flex items-center gap-2 text-white">
-          <img src={siteLogo} alt="Jepang Updates" className="h-8 w-auto" />
+      <div
+        className="sticky top-0 z-40 flex items-center justify-between border-b border-slate-200 px-4 py-3 transition-colors duration-300 lg:hidden"
+        style={{ backgroundColor: ready ? primaryColor : "#f1f5f9" }}
+      >
+        <Link href="/admin" className="flex items-center gap-2">
+          {ready && siteLogo ? (
+            <img src={siteLogo} alt="Logo" className="h-8 w-auto" />
+          ) : (
+            <div className="h-8 w-24 animate-pulse rounded bg-white/20" />
+          )}
         </Link>
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="text-white">
+        <button onClick={() => setMobileOpen(!mobileOpen)} className={ready ? "text-white" : "text-slate-400"}>
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -121,15 +134,18 @@ export function AdminSidebar() {
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed inset-y-0 left-0 z-50 w-72 transform flex flex-col text-white transition-transform lg:translate-x-0 ${mobileOpen ? "translate-x-0" : "-translate-x-full"}`} style={{ backgroundColor: primaryColor }}>
+      <aside
+        className={`fixed inset-y-0 left-0 z-50 w-72 transform flex flex-col text-white transition-all duration-300 lg:translate-x-0 ${mobileOpen ? "translate-x-0" : "-translate-x-full"}`}
+        style={{ backgroundColor: ready ? primaryColor : "#f1f5f9" }}
+      >
         {/* Logo */}
         <div className="px-5 py-6">
           <Link href="/" className="flex items-center gap-3">
-            <img
-              src={siteLogo}
-              alt="Jepang Updates"
-              className="h-14 w-auto"
-            />
+            {ready && siteLogo ? (
+              <img src={siteLogo} alt="Logo" className="h-14 w-auto" />
+            ) : (
+              <div className="h-14 w-36 animate-pulse rounded bg-white/20" />
+            )}
           </Link>
         </div>
 
@@ -174,7 +190,7 @@ export function AdminSidebar() {
         </nav>
 
         {/* Logout - fixed bottom */}
-        <div className="sticky bottom-0 border-t border-white/10 px-4 py-4" style={{ backgroundColor: primaryColor }}>
+        <div className="sticky bottom-0 border-t border-white/10 px-4 py-4" style={{ backgroundColor: ready ? primaryColor : "transparent" }}>
           <button
             onClick={() => signOut({ callbackUrl: "/login" })}
             className="flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-sm font-bold text-white/70 transition hover:bg-red-500/20 hover:text-red-200"
