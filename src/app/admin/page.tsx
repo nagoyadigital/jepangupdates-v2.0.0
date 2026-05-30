@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
-import { DollarSign, Eye, FileText, FolderTree, Image, Plus, TrendingUp, Users } from "lucide-react";
+import { Eye, FileText, FolderTree, Image, Plus, TrendingUp, Users, RefreshCw } from "lucide-react";
 import { AdminSidebar } from "@/components/AdminSidebar";
 import { AdminFooter } from "@/components/AdminFooter";
 
@@ -47,10 +47,12 @@ export default function AdminDashboard() {
   const [topArticles, setTopArticles] = useState<TopArticle[]>([]);
   const [categoryStats, setCategoryStats] = useState<CategoryStat[]>([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
 
-  useEffect(() => {
-    async function fetchDashboard() {
-      const res = await fetch("/api/admin/dashboard");
+  const fetchDashboard = useCallback(async (isRefresh = false) => {
+    if (isRefresh) setRefreshing(true);
+    try {
+      const res = await fetch("/api/admin/dashboard", { cache: "no-store" });
       if (res.ok) {
         const data = await res.json();
         setStats(data.stats);
@@ -58,10 +60,15 @@ export default function AdminDashboard() {
         setTopArticles(data.topArticles || []);
         setCategoryStats(data.categoryStats || []);
       }
+    } finally {
       setLoading(false);
+      setRefreshing(false);
     }
-    fetchDashboard();
   }, []);
+
+  useEffect(() => {
+    fetchDashboard();
+  }, [fetchDashboard]);
 
   const statusColors: Record<string, string> = {
     DRAFT: "bg-slate-100 text-slate-700",
@@ -79,18 +86,39 @@ export default function AdminDashboard() {
             <p className="text-sm font-black uppercase tracking-[0.2em] text-[#F5A91B]">Dashboard</p>
             <h1 className="mt-2 text-3xl font-black text-[#111827]">Overview Statistik</h1>
           </div>
-          <Link href="/admin/articles/new" className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-[#F5A91B] px-4 font-black text-[#1B5DAF] hover:bg-[#D98F00]">
-            <Plus size={18} />
-            Tambah Artikel
-          </Link>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => fetchDashboard(true)}
+              disabled={refreshing}
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-md border border-slate-200 bg-white px-4 text-sm font-bold text-slate-600 transition hover:border-[#1B5DAF] hover:text-[#1B5DAF] disabled:opacity-50"
+            >
+              <RefreshCw size={16} className={refreshing ? "animate-spin" : ""} />
+              Refresh
+            </button>
+            <Link href="/admin/articles/new" className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-[#F5A91B] px-4 font-black text-[#1B5DAF] hover:bg-[#D98F00]">
+              <Plus size={18} />
+              Tambah Artikel
+            </Link>
+          </div>
         </div>
 
         {/* Stats */}
         <section className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          <StatCard label="Total Artikel" value={loading ? "..." : String(stats?.totalArticles || 0)} sub={`${stats?.publishedArticles || 0} published, ${stats?.draftArticles || 0} draft`} icon={FileText} />
-          <StatCard label="Total Views" value={loading ? "..." : (stats?.totalViews || 0).toLocaleString()} sub="Semua artikel" icon={Eye} />
-          <StatCard label="Total Pengguna" value={loading ? "..." : String(stats?.totalUsers || 0)} sub="Semua role" icon={Users} />
-          <StatCard label="Media & Kategori" value={loading ? "..." : `${stats?.totalMedia || 0} / ${stats?.totalCategories || 0}`} sub="File / Kategori" icon={Image} />
+          {loading ? (
+            <>
+              <SkeletonStatCard />
+              <SkeletonStatCard />
+              <SkeletonStatCard />
+              <SkeletonStatCard />
+            </>
+          ) : (
+            <>
+              <StatCard label="Total Artikel" value={String(stats?.totalArticles || 0)} sub={`${stats?.publishedArticles || 0} published, ${stats?.draftArticles || 0} draft`} icon={FileText} />
+              <StatCard label="Total Views" value={(stats?.totalViews || 0).toLocaleString()} sub="Semua artikel" icon={Eye} />
+              <StatCard label="Total Pengguna" value={String(stats?.totalUsers || 0)} sub="Semua role" icon={Users} />
+              <StatCard label="Media & Kategori" value={`${stats?.totalMedia || 0} / ${stats?.totalCategories || 0}`} sub="File / Kategori" icon={Image} />
+            </>
+          )}
         </section>
 
         {/* Quick actions */}
@@ -117,14 +145,21 @@ export default function AdminDashboard() {
         <section className="mt-8 grid gap-6 lg:grid-cols-2">
           {/* Top Articles Chart */}
           <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-            <div className="flex items-center justify-between mb-4">
+            <div className="mb-4 flex items-center justify-between">
               <h2 className="text-sm font-black uppercase tracking-wider text-slate-500">
-                <TrendingUp size={14} className="inline mr-1.5 text-[#1B5DAF]" />
+                <TrendingUp size={14} className="mr-1.5 inline text-[#1B5DAF]" />
                 Artikel Terbanyak Dibaca
               </h2>
             </div>
             {loading ? (
-              <p className="py-8 text-center text-sm text-slate-400">Memuat...</p>
+              <div className="space-y-4">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="space-y-2">
+                    <div className="h-3 w-3/4 animate-pulse rounded bg-slate-100" />
+                    <div className="h-2 w-full animate-pulse rounded-full bg-slate-100" />
+                  </div>
+                ))}
+              </div>
             ) : topArticles.length === 0 ? (
               <p className="py-8 text-center text-sm text-slate-400">Belum ada data</p>
             ) : (
@@ -133,8 +168,8 @@ export default function AdminDashboard() {
                   const maxViews = topArticles[0]?.views || 1;
                   const percentage = Math.max((article.views / maxViews) * 100, 2);
                   return (
-                    <div key={article.slug}>
-                      <div className="flex items-center justify-between mb-1">
+                    <div key={article.slug} className="animate-fade-in" style={{ animationDelay: `${idx * 50}ms` }}>
+                      <div className="mb-1 flex items-center justify-between">
                         <p className="min-w-0 flex-1 truncate text-xs font-bold text-[#111827]">
                           <span className="mr-2 text-slate-400">{idx + 1}.</span>
                           {article.title}
@@ -143,7 +178,7 @@ export default function AdminDashboard() {
                       </div>
                       <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100">
                         <div
-                          className="h-full rounded-full bg-gradient-to-r from-[#1B5DAF] to-[#4A90D9]"
+                          className="h-full rounded-full bg-gradient-to-r from-[#1B5DAF] to-[#4A90D9] transition-all duration-700 ease-out"
                           style={{ width: `${percentage}%` }}
                         />
                       </div>
@@ -156,24 +191,31 @@ export default function AdminDashboard() {
 
           {/* Category Views Chart */}
           <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-            <div className="flex items-center justify-between mb-4">
+            <div className="mb-4 flex items-center justify-between">
               <h2 className="text-sm font-black uppercase tracking-wider text-slate-500">
-                <FolderTree size={14} className="inline mr-1.5 text-[#F5A91B]" />
+                <FolderTree size={14} className="mr-1.5 inline text-[#F5A91B]" />
                 Views per Kategori
               </h2>
             </div>
             {loading ? (
-              <p className="py-8 text-center text-sm text-slate-400">Memuat...</p>
+              <div className="space-y-4">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="space-y-2">
+                    <div className="h-3 w-1/2 animate-pulse rounded bg-slate-100" />
+                    <div className="h-2 w-full animate-pulse rounded-full bg-slate-100" />
+                  </div>
+                ))}
+              </div>
             ) : categoryStats.length === 0 ? (
               <p className="py-8 text-center text-sm text-slate-400">Belum ada data</p>
             ) : (
               <div className="space-y-3">
-                {categoryStats.map((cat) => {
+                {categoryStats.map((cat, idx) => {
                   const maxViews = categoryStats[0]?.views || 1;
                   const percentage = Math.max((cat.views / maxViews) * 100, 2);
                   return (
-                    <div key={cat.name}>
-                      <div className="flex items-center justify-between mb-1">
+                    <div key={cat.name} className="animate-fade-in" style={{ animationDelay: `${idx * 50}ms` }}>
+                      <div className="mb-1 flex items-center justify-between">
                         <p className="text-xs font-bold text-[#111827]">{cat.name}</p>
                         <div className="flex items-center gap-3">
                           <span className="text-[10px] text-slate-400">{cat.articles} artikel</span>
@@ -182,7 +224,7 @@ export default function AdminDashboard() {
                       </div>
                       <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100">
                         <div
-                          className="h-full rounded-full bg-gradient-to-r from-[#F5A91B] to-[#FFD166]"
+                          className="h-full rounded-full bg-gradient-to-r from-[#F5A91B] to-[#FFD166] transition-all duration-700 ease-out"
                           style={{ width: `${percentage}%` }}
                         />
                       </div>
@@ -216,19 +258,32 @@ export default function AdminDashboard() {
               </thead>
               <tbody className="divide-y divide-slate-200">
                 {loading ? (
-                  <tr><td colSpan={6} className="px-5 py-8 text-center text-slate-400">Memuat data...</td></tr>
+                  [...Array(5)].map((_, i) => (
+                    <tr key={i}>
+                      <td className="px-5 py-4"><div className="h-4 w-48 animate-pulse rounded bg-slate-100" /></td>
+                      <td className="px-5 py-4"><div className="h-4 w-20 animate-pulse rounded bg-slate-100" /></td>
+                      <td className="px-5 py-4"><div className="h-4 w-24 animate-pulse rounded bg-slate-100" /></td>
+                      <td className="px-5 py-4"><div className="h-4 w-16 animate-pulse rounded bg-slate-100" /></td>
+                      <td className="px-5 py-4"><div className="h-4 w-12 animate-pulse rounded bg-slate-100" /></td>
+                      <td className="px-5 py-4"><div className="h-4 w-20 animate-pulse rounded bg-slate-100" /></td>
+                    </tr>
+                  ))
                 ) : recentArticles.length === 0 ? (
                   <tr><td colSpan={6} className="px-5 py-8 text-center text-slate-400">Belum ada artikel. Mulai tulis artikel pertama!</td></tr>
                 ) : (
-                  recentArticles.map((article) => (
-                    <tr key={article.id}>
-                      <td className="max-w-[280px] truncate px-5 py-4 font-bold text-[#1B5DAF]">{article.title}</td>
+                  recentArticles.map((article, idx) => (
+                    <tr key={article.id} className="animate-fade-in transition-colors hover:bg-slate-50" style={{ animationDelay: `${idx * 30}ms` }}>
+                      <td className="max-w-[280px] truncate px-5 py-4 font-bold text-[#1B5DAF]">
+                        <Link href={`/admin/articles/${article.id}`} className="hover:underline">
+                          {article.title}
+                        </Link>
+                      </td>
                       <td className="px-5 py-4 text-slate-600">{article.category.name}</td>
                       <td className="px-5 py-4 text-slate-600">{article.author.name}</td>
                       <td className="px-5 py-4">
                         <span className={`rounded-md px-2 py-1 text-xs font-bold ${statusColors[article.status] || ""}`}>{article.status}</span>
                       </td>
-                      <td className="px-5 py-4 text-slate-600">{article.views}</td>
+                      <td className="px-5 py-4 text-slate-600">{article.views.toLocaleString()}</td>
                       <td className="px-5 py-4 text-slate-600">{new Date(article.createdAt).toLocaleDateString("id-ID")}</td>
                     </tr>
                   ))
@@ -245,7 +300,7 @@ export default function AdminDashboard() {
 
 function StatCard({ label, value, sub, icon: Icon }: { label: string; value: string; sub: string; icon: React.ElementType }) {
   return (
-    <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300">
       <div className="flex items-start justify-between">
         <div>
           <p className="text-sm font-bold text-slate-500">{label}</p>
@@ -255,6 +310,21 @@ function StatCard({ label, value, sub, icon: Icon }: { label: string; value: str
         <div className="rounded-lg bg-[#F4F7FB] p-3">
           <Icon size={22} className="text-[#1B5DAF]" />
         </div>
+      </div>
+    </div>
+  );
+}
+
+function SkeletonStatCard() {
+  return (
+    <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+      <div className="flex items-start justify-between">
+        <div className="flex-1">
+          <div className="h-3 w-24 animate-pulse rounded bg-slate-100" />
+          <div className="mt-3 h-8 w-20 animate-pulse rounded bg-slate-100" />
+          <div className="mt-2 h-3 w-32 animate-pulse rounded bg-slate-100" />
+        </div>
+        <div className="h-11 w-11 animate-pulse rounded-lg bg-slate-100" />
       </div>
     </div>
   );
