@@ -19,15 +19,17 @@ export function ArticleContentWithAd({ content, bacaJuga }: { content: string; b
       .catch(() => {});
   }, []);
 
-  // Split content by paragraphs properly
-  const paragraphs = content.split(/<\/p>/gi);
-  const nonEmptyParagraphs = paragraphs.filter(p => p.trim().length > 0);
-  const totalParagraphs = nonEmptyParagraphs.length;
+  // Split content by all block-level closing tags to count content blocks
+  const blockPattern = /<\/(?:p|h[1-6]|ul|ol|blockquote|div|table|figure)>/gi;
+  const blocks = content.split(blockPattern);
+  const nonEmptyBlocks = blocks.filter(b => b.trim().length > 0);
+  const totalBlocks = nonEmptyBlocks.length;
   
-  // Only split if article has enough paragraphs (min 6 paragraphs / ~300 kata)
-  const isLongEnough = totalParagraphs >= 6;
+  // Show ad if article has at least 3 content blocks
+  const isLongEnough = totalBlocks >= 3;
 
-  // Calculate split points based on non-empty paragraphs mapped back to original indices
+  // Use original paragraph-based split for content insertion points
+  const paragraphs = content.split(/<\/p>/gi);
   const bacaJugaIndex = Math.floor(paragraphs.length * 0.5);
   const adIndex = Math.floor(paragraphs.length * 0.7);
 
